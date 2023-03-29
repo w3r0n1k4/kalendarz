@@ -1,0 +1,33 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PomyslneLog.aspx.cs" Inherits="AppCalendar.PomyslneLog" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Zalogowano</title>
+    <link href="Styl.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div class="STRONA">
+         <div style="height: 300px;">
+        <p style="font-size: 23px;">Zalogowano pomyślnie!</p>
+              <p style="font-size: 17px;">Id: <asp:Label ID="IdLabel" runat="server" Text=" "></asp:Label></p>
+              <p style="font-size: 17px; ">E-mail: <asp:Label ID="EmailLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujEmailButton" runat="server" Text="Edytuj"  Visible="true" style="margin-left: 10px;" OnClick="EdytujEmailButton_Click"/><asp:TextBox ID="WpiszNowyEmailBox" runat="server" Visible="false" ></asp:TextBox><asp:Button ID="ZapiszEdycjeEButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeEButton_Click" /></p>
+              <p style="font-size: 17px;">Hasło: <asp:Label ID="HasloLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujHasloButton" runat="server" Text="Edytuj" Visible="true" style="margin-left: 10px;" OnClick="EdytujHasloButton_Click" /><asp:TextBox ID="WpiszNoweHasloBox" runat="server"  Visible="false"></asp:TextBox><asp:Button ID="ZapiszEdycjeHButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeHButton_Click"/></p>
+
+             <asp:Button ID="WylogujButton" runat="server" Text="Wyloguj" OnClick="WylogujButton_Click" /><br/>
+             <asp:Button ID="UsunKontoButton" runat="server" Text="Usuń konto" OnClick="UsunKontoButton_Click" /><br/><br/>
+    <div style="text-align: center; height: 300px;">
+        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/WidokKalendarza.aspx">PRZEJDŹ DO KALENDARZA</a></p>
+    </div>
+         </div>
+        </div>
+    </form>
+</body>
+
+</html>
+
+
