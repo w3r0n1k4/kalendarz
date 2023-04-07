@@ -69,6 +69,15 @@ namespace AppCalendar
         protected global::System.Web.UI.WebControls.Button ZapiszEdycjeEButton;
 
         /// <summary>
+        /// Kontrolka InfoLabelPL1.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InfoLabelPL1;
+
+        /// <summary>
         /// Kontrolka HasloLabel.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace AppCalendar
         protected global::System.Web.UI.WebControls.Button ZapiszEdycjeHButton;
 
         /// <summary>
+        /// Kontrolka InfoLabelPL2.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InfoLabelPL2;
+
+        /// <summary>
         /// Kontrolka WylogujButton.
         /// </summary>
         /// <remarks>
@@ -121,5 +139,14 @@ namespace AppCalendar
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UsunKontoButton;
+
+        /// <summary>
+        /// Kontrolka InfoLabelPL3.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InfoLabelPL3;
     }
 }

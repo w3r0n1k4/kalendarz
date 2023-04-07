@@ -33,6 +33,7 @@
                 </tr>
             </tbody>
             </table>
+            <asp:Label ID="InfoLabelR" runat="server" Text=""></asp:Label>
         </div>
         </div>
     </form>

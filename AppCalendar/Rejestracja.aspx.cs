@@ -6,6 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
 
 namespace AppCalendar
 {
@@ -19,24 +22,45 @@ namespace AppCalendar
         protected void ZarejestrujButton_Click(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
-            string query = "INSERT INTO Tabela_RL (Email, Haslo) VALUES ('" + EmailBoxR.Text + "', '" + HasloBoxR.Text + "')";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string email = EmailBoxR.Text;
+            string password = HasloBoxR.Text;
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Zarejestrowano!");
-                    Response.Redirect("Logowanie.aspx");
-                }
-                else
-                {
-                    MessageBox.Show("Nie zarejestrowano!");
-
-                }
+                InfoLabelR.Text = "Nie uzupełniono wszystkich pól!";
+                string redirectScript = "setTimeout(function() { window.location.href = 'Rejestracja.aspx'; }, 1000);";
+                ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
 
             }
+            else
+            {
+                string selectQuery = "SELECT COUNT(*) FROM Tabela_RL WHERE Email = @Email";
+                string insertQuery = "INSERT INTO Tabela_RL (Email, Haslo) VALUES (@Email, @Haslo)";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                    selectCommand.Parameters.AddWithValue("@Email", email);
+                    int count = (int)selectCommand.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        InfoLabelR.Text = "Konto o podanym adresie e-mail już istnieje!";
+                    }
+                    else
+                    {
+                        SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+                        insertCommand.Parameters.AddWithValue("@Email", email);
+                        insertCommand.Parameters.AddWithValue("@Haslo", password);
+                        int rowsAffected = insertCommand.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            InfoLabelR.Text = "Zarejestrowano!";
+                            string redirectScript = "setTimeout(function() { window.location.href = 'Logowanie.aspx'; }, 2000);";
+                            ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
+                        }
+                    }
+                }
+            }
         }
+
     }
 }

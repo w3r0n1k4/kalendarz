@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
-using System.Configuration;
 
 namespace AppCalendar
 {
@@ -19,27 +18,28 @@ namespace AppCalendar
         }
 
         protected void ZalogujButton_Click(object sender, EventArgs e)
-        { 
+        {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             string query = "SELECT * FROM Tabela_RL WHERE Email='" + EmailBoxL.Text + "' AND Haslo='" + HasloBoxL.Text + "'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                        connection.Open();
-                        SqlCommand command = new SqlCommand(query, connection);
-                        SqlDataReader reader = command.ExecuteReader();
-                        if (reader.Read())
-                        {
-                             string email = EmailBoxL.Text;
-                             string haslo = HasloBoxL.Text;
-                             Response.Redirect("PomyslneLog.aspx?email=" + email + "&haslo=" + haslo);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Niezalogowano, spróbuj ponownie!");
-                        }
-                        reader.Close();
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    string email = EmailBoxL.Text;
+                    string haslo = HasloBoxL.Text;
+                    Response.Redirect("PomyslneLog.aspx?email=" + email + "&haslo=" + haslo);
+                }
+                else
+                {
+                    InfoLabelL.Text = "Nieprawidłowe dane! Spróbuj ponownie.";
+                    string redirectScript = "setTimeout(function() { window.location.href = 'Logowanie.aspx'; }, 1000);";
+                    ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
+                }
+                reader.Close();
             }
-
         }
     }
 }

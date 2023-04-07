@@ -50,8 +50,6 @@ namespace AppCalendar
             }
         }
 
-
-
         protected void WylogujButton_Click(object sender, EventArgs e)
         {
             Session.Clear();
@@ -64,7 +62,6 @@ namespace AppCalendar
             WpiszNowyEmailBox.Visible = true;
             ZapiszEdycjeEButton.Visible = true;
         }
-
 
         protected void EdytujHasloButton_Click(object sender, EventArgs e)
         {
@@ -88,12 +85,9 @@ namespace AppCalendar
 
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Konto usunięte!");
-                Response.Redirect("Logowanie.aspx");
-            }
-            else
-            {
-                
+                InfoLabelPL3.Text = "Konto usunięte!";
+                string redirectScript = "setTimeout(function() { window.location.href = 'Logowanie.aspx'; }, 2000);";
+                ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
             }
         }
 
@@ -105,21 +99,39 @@ namespace AppCalendar
             string NowyEmail = WpiszNowyEmailBox.Text;
 
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
-            string query = "UPDATE Tabela_RL SET Email = @Email WHERE Id = @userId";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Email", NowyEmail);
-            command.Parameters.AddWithValue("@userId", userId);
-            command.ExecuteNonQuery();
+                if (string.IsNullOrWhiteSpace(NowyEmail))
+                {
+                    InfoLabelPL1.Text = "Pole z nowym adresem e-mail nie może być puste!";
+                    return;
+                }
 
-            connection.Close();
-            MessageBox.Show("E-mail został zmieniony na: " + NowyEmail + "\n\nZaloguj się ponownie!");
-            /*EdytujHasloPrzycisk.Visible = false;
-            WpiszNoweHaslo.Visible = false;
-            ZapiszEdycjeHPrzycisk.Visible = false;*/
-            Response.Redirect("Logowanie.aspx");
+                string selectQuery = "SELECT COUNT(*) FROM Tabela_RL WHERE Email = @Email AND Id != @userId";
+                SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                selectCommand.Parameters.AddWithValue("@Email", NowyEmail);
+                selectCommand.Parameters.AddWithValue("@userId", userId);
+                int count = (int)selectCommand.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    InfoLabelPL1.Text = "Konto o podanym adresie e-mail już istnieje!";
+                    return;
+                }
+
+                string query = "UPDATE Tabela_RL SET Email = @Email WHERE Id = @userId";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Email", NowyEmail);
+                command.Parameters.AddWithValue("@userId", userId);
+                command.ExecuteNonQuery();
+
+                connection.Close();
+                InfoLabelPL1.Text = "E-mail został zmieniony na: " + NowyEmail + ". Zaloguj się ponownie!";
+                string redirectScript = "setTimeout(function() { window.location.href = 'Logowanie.aspx'; }, 2000);";
+                ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
+            }
         }
 
         protected void ZapiszEdycjeHButton_Click(object sender, EventArgs e)
@@ -128,6 +140,12 @@ namespace AppCalendar
             string AktualneHaslo = HasloLabel.Text;
 
             string NoweHaslo = WpiszNoweHasloBox.Text;
+
+            if (string.IsNullOrWhiteSpace(NoweHaslo))
+            {
+                InfoLabelPL2.Text = "Pole z nowym hasłem nie może być puste!";
+                return;
+            }
 
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             SqlConnection connection = new SqlConnection(connectionString);
@@ -140,11 +158,9 @@ namespace AppCalendar
             command.ExecuteNonQuery();
 
             connection.Close();
-            MessageBox.Show("Hasło zostało zmienione na: " + NoweHaslo + "\n\nZaloguj się ponownie!");
-            /*EdytujHasloPrzycisk.Visible = true;
-            WpiszNoweHaslo.Visible = false;
-            ZapiszEdycjeHPrzycisk.Visible = false;*/
-            Response.Redirect("Logowanie.aspx");
+            InfoLabelPL2.Text = "Hasło zostało zmienione na: " + NoweHaslo + ".Zaloguj się ponownie!";
+            string redirectScript = "setTimeout(function() { window.location.href = 'Logowanie.aspx'; }, 2000);";
+            ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
         }
     }
 }
