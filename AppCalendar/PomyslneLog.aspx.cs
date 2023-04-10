@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using AppCalendar;
 using System.Windows;
+using System.Security.Cryptography;
 
 namespace AppCalendar
 {
@@ -24,30 +25,57 @@ namespace AppCalendar
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
 
-                string query1 = "SELECT Id FROM Tabela_RL WHERE Email = @Email AND Haslo = @Haslo";
+                string query1 = "SELECT Id, Sol FROM Tabela_RL WHERE Email = @Email";
                 SqlCommand command1 = new SqlCommand(query1, connection);
                 command1.Parameters.AddWithValue("@Email", email);
-                command1.Parameters.AddWithValue("@Haslo", haslo);
+
+                byte[] przechowywana_sol = null;
+
+                SqlDataReader reader1 = command1.ExecuteReader();
+                if (reader1.Read())
+                {
+                    przechowywana_sol = (byte[])reader1["Sol"];
+                }
+                reader1.Close();
+
+                string zaszyfrowane_haslo = SzyfrujHaslo(haslo, przechowywana_sol);
+
+                string query2 = "SELECT Id, Email, Haslo FROM Tabela_RL WHERE Email = @Email AND Haslo = @Haslo";
+                SqlCommand command2 = new SqlCommand(query2, connection);
+                command2.Parameters.AddWithValue("@Email", email);
+                command2.Parameters.AddWithValue("@Haslo", zaszyfrowane_haslo);
+
                 using (connection)
                 {
-                    int userId = (int)command1.ExecuteScalar();
+                    int userId = (int)command2.ExecuteScalar();
 
-                    string query2 = "SELECT Id, Email, Haslo FROM Tabela_RL WHERE Id = @userId";
-                    SqlCommand command2 = new SqlCommand(query2, connection);
-                    command2.Parameters.AddWithValue("@userId", userId);
-                    SqlDataReader reader = command2.ExecuteReader();
+                    string query3 = "SELECT Id, Email, Haslo FROM Tabela_RL WHERE Id = @userId";
+                    SqlCommand command3 = new SqlCommand(query3, connection);
+                    command3.Parameters.AddWithValue("@userId", userId);
+                    SqlDataReader reader = command3.ExecuteReader();
 
                     if (reader.Read())
                     {
                         IdLabel.Text = reader["Id"].ToString();
                         EmailLabel.Text = reader["Email"].ToString();
-                        HasloLabel.Text = reader["Haslo"].ToString();
+                        HasloLabel.Text = haslo;
                     }
 
                     reader.Close();
                 }
                 connection.Close();
             }
+        }
+
+
+        const int keySize = 64;
+        const int iterations = 350000;
+        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+
+        string SzyfrujHaslo(string h, byte[] s)
+        {
+            var szyfr = new Rfc2898DeriveBytes(h, s, iterations, hashAlgorithm).GetBytes(keySize);
+            return Convert.ToBase64String(szyfr);
         }
 
         protected void WylogujButton_Click(object sender, EventArgs e)
@@ -151,11 +179,25 @@ namespace AppCalendar
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
-            string query = "UPDATE Tabela_RL SET Haslo = @Haslo WHERE Id = @userId";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Haslo", NoweHaslo);
-            command.Parameters.AddWithValue("@userId", userId);
-            command.ExecuteNonQuery();
+            byte[] przechowywana_sol = null;
+            string query1 = "SELECT Sol FROM Tabela_RL WHERE Id = @userId";
+            SqlCommand command1 = new SqlCommand(query1, connection);
+            command1.Parameters.AddWithValue("@userId", userId);
+
+            SqlDataReader reader1 = command1.ExecuteReader();
+            if (reader1.Read())
+            {
+                przechowywana_sol = (byte[])reader1["Sol"];
+            }
+            reader1.Close();
+
+            string zaszyfrowane_haslo = SzyfrujHaslo(NoweHaslo, przechowywana_sol);
+
+            string query2 = "UPDATE Tabela_RL SET Haslo = @Haslo WHERE Id = @userId";
+            SqlCommand command2 = new SqlCommand(query2, connection);
+            command2.Parameters.AddWithValue("@Haslo", zaszyfrowane_haslo);
+            command2.Parameters.AddWithValue("@userId", userId);
+            command2.ExecuteNonQuery();
 
             connection.Close();
             InfoLabelPL2.Text = "Hasło zostało zmienione na: " + NoweHaslo + ".Zaloguj się ponownie!";
