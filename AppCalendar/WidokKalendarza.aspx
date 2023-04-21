@@ -11,7 +11,20 @@
 <body>
      <form id="form1" runat="server">
         <div>
-            <asp:Calendar ID="Kalendarz" runat="server" OnSelectionChanged="Kalendarz_SelectionChanged"></asp:Calendar>
+            <asp:Calendar ID="Kalendarz" runat="server" OnSelectionChanged="Kalendarz_SelectionChanged"  DayRender="Kalendarz_DayRender" Height="238px" Width="1160px"></asp:Calendar>
+            <asp:Button ID="DodajWydarzenieButton" runat="server" Text="Dodaj wydarzenie" Visible="false" OnClick="DodajWydarzenieButton_Click" />
+            <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="false" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="DataLabel" runat="server" Text="Data:     " Visible="false" ></asp:Label><asp:TextBox ID="DataBox" runat="server" TextMode="Date" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="GodzinaLabel" runat="server" Text="Godzina:     " Visible="false" ></asp:Label><asp:TextBox ID="GodzinaBox" runat="server" TextMode="Time" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="OpisLabel" runat="server" Text="Opis:     " Visible="false"></asp:Label><asp:TextBox ID="OpisBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="MiejsceLabel" runat="server" Text="Miejsce:     " Visible="false"></asp:Label><asp:TextBox ID="MiejsceBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="KategoriaLabel" runat="server" Text="Kategoria:     " Visible="false"></asp:Label><asp:TextBox ID="KategoriaBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="GoscieLabel" runat="server" Text="Goście:     " Visible="false"></asp:Label><asp:TextBox ID="GoscieBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="NotatkaLabel" runat="server" Text="Notatka:     " Visible="false"></asp:Label><asp:TextBox ID="NotatkaBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="KolorLabel" runat="server" Text="Kolor:     " Visible="false"></asp:Label><asp:TextBox ID="KolorBox" runat="server" TextMode="Color" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="PriorytetLabel" runat="server" Text="Prioryet:     " Visible="false"></asp:Label><asp:TextBox ID="PriorytetBox" runat="server" TextMode="Number" Visible="false" Min="1" Max="10"></asp:TextBox><br />
+            <asp:Button ID="ZapiszButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszButton_Click" />
+            <asp:Label ID="InfoLabelDW" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>

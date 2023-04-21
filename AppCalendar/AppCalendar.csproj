@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DataClasses2.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses2.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Logowanie.aspx.cs">
       <DependentUpon>Logowanie.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +143,11 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="DataClasses2.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses2.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -153,6 +163,11 @@
   <ItemGroup>
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClasses2.dbml.layout">
+      <DependentUpon>DataClasses2.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>

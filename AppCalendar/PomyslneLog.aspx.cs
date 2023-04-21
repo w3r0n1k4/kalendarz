@@ -48,6 +48,7 @@ namespace AppCalendar
                 using (connection)
                 {
                     int userId = (int)command2.ExecuteScalar();
+                    Session["user_id"] = userId;
 
                     string query3 = "SELECT Id, Email, Haslo FROM Tabela_RL WHERE Id = @userId";
                     SqlCommand command3 = new SqlCommand(query3, connection);

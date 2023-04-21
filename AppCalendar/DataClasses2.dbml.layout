@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses2">
+  <DataContextMoniker Name="/DataClasses2DataContext" />
+  <nestedChildShapes>
+    <classShape Id="2c43b4fd-0574-4cbd-8ccd-b8761d46db82" absoluteBounds="1, 1.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClasses2DataContext/Tabela_RL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="006df31a-a68b-4523-a7e8-7a6ba1dc6eb3" absoluteBounds="1.0150000000000001, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2dde120a-05a4-48b0-a680-a96b901594c8" absoluteBounds="3.875, 0.875, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/DataClasses2DataContext/Tabela_Wydarzenia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2fc94f4c-8510-4944-8274-6599bea8de99" absoluteBounds="3.8899999999999997, 1.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3 : 2.41429768880208); (3.875 : 2.41429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses2DataContext/Tabela_RL/Tabela_RL_Tabela_Wydarzenia" />
+      <nodes>
+        <classShapeMoniker Id="2c43b4fd-0574-4cbd-8ccd-b8761d46db82" />
+        <classShapeMoniker Id="2dde120a-05a4-48b0-a680-a96b901594c8" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

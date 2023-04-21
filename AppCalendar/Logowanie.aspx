@@ -19,7 +19,7 @@
                 <tr>
                     <td stle="padding: 18px; ">E-mail: </td>
                     <td>
-                        <asp:TextBox ID="EmailBoxL" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="EmailBoxL" runat="server" TextMode="Email"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td stle="padding: 18px; ">Hasło: </td>
