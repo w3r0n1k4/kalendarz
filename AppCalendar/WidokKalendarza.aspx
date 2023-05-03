@@ -10,8 +10,9 @@
 </head>
 <body>
      <form id="form1" runat="server">
-        <div>
+         <div draggable="auto">
             <asp:Calendar ID="Kalendarz" runat="server" OnSelectionChanged="Kalendarz_SelectionChanged"  DayRender="Kalendarz_DayRender" Height="238px" Width="1160px"></asp:Calendar>
+            <p style="font-size: 12px; font-family: sans-serif;"><a href="https://localhost:44360/ListaToDo.aspx">LISTA TO DO</a></p>
             <asp:Button ID="DodajWydarzenieButton" runat="server" Text="Dodaj wydarzenie" Visible="false" OnClick="DodajWydarzenieButton_Click" />
             <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="false" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="DataLabel" runat="server" Text="Data:     " Visible="false" ></asp:Label><asp:TextBox ID="DataBox" runat="server" TextMode="Date" Visible="false"></asp:TextBox><br/>
@@ -26,6 +27,24 @@
             <asp:Button ID="ZapiszButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszButton_Click" />
             <asp:Label ID="InfoLabelDW" runat="server" Text=""></asp:Label>
         </div>
+        <!--       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource1">
+             <Columns>
+                 <asp:BoundField DataField="Nazwa" HeaderText="Nazwa" ReadOnly="True" SortExpression="Nazwa" />
+                 <asp:BoundField DataField="Data" HeaderText="Data" ReadOnly="True" SortExpression="Data" />
+                 <asp:BoundField DataField="Opis" HeaderText="Opis" ReadOnly="True" SortExpression="Opis" />
+                 <asp:BoundField DataField="Godzina" HeaderText="Godzina" ReadOnly="True" SortExpression="Godzina" />
+                 <asp:BoundField DataField="Miejsce" HeaderText="Miejsce" ReadOnly="True" SortExpression="Miejsce" />
+                 <asp:BoundField DataField="Kategoria" HeaderText="Kategoria" ReadOnly="True" SortExpression="Kategoria" />
+                 <asp:BoundField DataField="Priorytet" HeaderText="Priorytet" ReadOnly="True" SortExpression="Priorytet" />
+                 <asp:BoundField DataField="Notatka" HeaderText="Notatka" ReadOnly="True" SortExpression="Notatka" />
+                 <asp:BoundField DataField="Goscie" HeaderText="Goscie" ReadOnly="True" SortExpression="Goscie" />
+             </Columns>
+         </asp:GridView>
+         <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="AppCalendar.DataClasses2DataContext" EntityTypeName="" Select="new (Nazwa, Data, Opis, Godzina, Miejsce, Kategoria, Priorytet, Notatka, Goscie)" TableName="Tabela_Wydarzenia" Where="Data == @Data">
+             <WhereParameters>
+                 <asp:ControlParameter ControlID="Kalendarz" Name="Data" PropertyName="SelectedDate" Type="DateTime" />
+             </WhereParameters>
+         </asp:LinqDataSource> -->
     </form>
 </body>
 </html>

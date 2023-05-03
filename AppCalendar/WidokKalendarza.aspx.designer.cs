@@ -238,5 +238,23 @@ namespace AppCalendar
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label InfoLabelDW;
+
+        /// <summary>
+        /// Kontrolka GridView1.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+
+        /// <summary>
+        /// Kontrolka LinqDataSource1.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource1;
     }
 }
