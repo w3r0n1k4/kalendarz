@@ -30,6 +30,12 @@ namespace AppCalendar
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertTabela_Wydarzenia(Tabela_Wydarzenia instance);
+    partial void UpdateTabela_Wydarzenia(Tabela_Wydarzenia instance);
+    partial void DeleteTabela_Wydarzenia(Tabela_Wydarzenia instance);
+    partial void InsertTabela_Kategorie(Tabela_Kategorie instance);
+    partial void UpdateTabela_Kategorie(Tabela_Kategorie instance);
+    partial void DeleteTabela_Kategorie(Tabela_Kategorie instance);
     partial void InsertTabela_RL(Tabela_RL instance);
     partial void UpdateTabela_RL(Tabela_RL instance);
     partial void DeleteTabela_RL(Tabela_RL instance);
@@ -65,6 +71,22 @@ namespace AppCalendar
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Tabela_Wydarzenia> Tabela_Wydarzenia
+		{
+			get
+			{
+				return this.GetTable<Tabela_Wydarzenia>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Tabela_Kategorie> Tabela_Kategorie
+		{
+			get
+			{
+				return this.GetTable<Tabela_Kategorie>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Tabela_RL> Tabela_RL
 		{
 			get
@@ -72,13 +94,527 @@ namespace AppCalendar
 				return this.GetTable<Tabela_RL>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tabela_Wydarzenia")]
+	public partial class Tabela_Wydarzenia : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<Tabela_Wydarzenia> Tabela_Wydarzenia
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Nazwa;
+		
+		private System.DateTime _Data;
+		
+		private System.Nullable<System.TimeSpan> _Godzina;
+		
+		private string _Opis;
+		
+		private string _Miejsce;
+		
+		private string _Goscie;
+		
+		private string _Notatka;
+		
+		private string _Kolor;
+		
+		private int _Priorytet;
+		
+		private int _Id_Uzytkownika;
+		
+		private int _Id_Kategorii;
+		
+		private EntityRef<Tabela_Kategorie> _Tabela_Kategorie;
+		
+		private EntityRef<Tabela_RL> _Tabela_RL;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNazwaChanging(string value);
+    partial void OnNazwaChanged();
+    partial void OnDataChanging(System.DateTime value);
+    partial void OnDataChanged();
+    partial void OnGodzinaChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnGodzinaChanged();
+    partial void OnOpisChanging(string value);
+    partial void OnOpisChanged();
+    partial void OnMiejsceChanging(string value);
+    partial void OnMiejsceChanged();
+    partial void OnGoscieChanging(string value);
+    partial void OnGoscieChanged();
+    partial void OnNotatkaChanging(string value);
+    partial void OnNotatkaChanged();
+    partial void OnKolorChanging(string value);
+    partial void OnKolorChanged();
+    partial void OnPriorytetChanging(int value);
+    partial void OnPriorytetChanged();
+    partial void OnId_UzytkownikaChanging(int value);
+    partial void OnId_UzytkownikaChanged();
+    partial void OnId_KategoriiChanging(int value);
+    partial void OnId_KategoriiChanged();
+    #endregion
+		
+		public Tabela_Wydarzenia()
+		{
+			this._Tabela_Kategorie = default(EntityRef<Tabela_Kategorie>);
+			this._Tabela_RL = default(EntityRef<Tabela_RL>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this.GetTable<Tabela_Wydarzenia>();
+				return this._Id;
 			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nazwa", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nazwa
+		{
+			get
+			{
+				return this._Nazwa;
+			}
+			set
+			{
+				if ((this._Nazwa != value))
+				{
+					this.OnNazwaChanging(value);
+					this.SendPropertyChanging();
+					this._Nazwa = value;
+					this.SendPropertyChanged("Nazwa");
+					this.OnNazwaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date NOT NULL")]
+		public System.DateTime Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Godzina", DbType="Time")]
+		public System.Nullable<System.TimeSpan> Godzina
+		{
+			get
+			{
+				return this._Godzina;
+			}
+			set
+			{
+				if ((this._Godzina != value))
+				{
+					this.OnGodzinaChanging(value);
+					this.SendPropertyChanging();
+					this._Godzina = value;
+					this.SendPropertyChanged("Godzina");
+					this.OnGodzinaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Opis", DbType="NVarChar(200)")]
+		public string Opis
+		{
+			get
+			{
+				return this._Opis;
+			}
+			set
+			{
+				if ((this._Opis != value))
+				{
+					this.OnOpisChanging(value);
+					this.SendPropertyChanging();
+					this._Opis = value;
+					this.SendPropertyChanged("Opis");
+					this.OnOpisChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Miejsce", DbType="NVarChar(200)")]
+		public string Miejsce
+		{
+			get
+			{
+				return this._Miejsce;
+			}
+			set
+			{
+				if ((this._Miejsce != value))
+				{
+					this.OnMiejsceChanging(value);
+					this.SendPropertyChanging();
+					this._Miejsce = value;
+					this.SendPropertyChanged("Miejsce");
+					this.OnMiejsceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Goscie", DbType="NVarChar(200)")]
+		public string Goscie
+		{
+			get
+			{
+				return this._Goscie;
+			}
+			set
+			{
+				if ((this._Goscie != value))
+				{
+					this.OnGoscieChanging(value);
+					this.SendPropertyChanging();
+					this._Goscie = value;
+					this.SendPropertyChanged("Goscie");
+					this.OnGoscieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notatka", DbType="NVarChar(200)")]
+		public string Notatka
+		{
+			get
+			{
+				return this._Notatka;
+			}
+			set
+			{
+				if ((this._Notatka != value))
+				{
+					this.OnNotatkaChanging(value);
+					this.SendPropertyChanging();
+					this._Notatka = value;
+					this.SendPropertyChanged("Notatka");
+					this.OnNotatkaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kolor", DbType="NVarChar(20)")]
+		public string Kolor
+		{
+			get
+			{
+				return this._Kolor;
+			}
+			set
+			{
+				if ((this._Kolor != value))
+				{
+					this.OnKolorChanging(value);
+					this.SendPropertyChanging();
+					this._Kolor = value;
+					this.SendPropertyChanged("Kolor");
+					this.OnKolorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Priorytet", DbType="Int NOT NULL")]
+		public int Priorytet
+		{
+			get
+			{
+				return this._Priorytet;
+			}
+			set
+			{
+				if ((this._Priorytet != value))
+				{
+					this.OnPriorytetChanging(value);
+					this.SendPropertyChanging();
+					this._Priorytet = value;
+					this.SendPropertyChanged("Priorytet");
+					this.OnPriorytetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Uzytkownika", DbType="Int NOT NULL")]
+		public int Id_Uzytkownika
+		{
+			get
+			{
+				return this._Id_Uzytkownika;
+			}
+			set
+			{
+				if ((this._Id_Uzytkownika != value))
+				{
+					if (this._Tabela_RL.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_UzytkownikaChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Uzytkownika = value;
+					this.SendPropertyChanged("Id_Uzytkownika");
+					this.OnId_UzytkownikaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Kategorii", DbType="Int NOT NULL")]
+		public int Id_Kategorii
+		{
+			get
+			{
+				return this._Id_Kategorii;
+			}
+			set
+			{
+				if ((this._Id_Kategorii != value))
+				{
+					if (this._Tabela_Kategorie.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_KategoriiChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Kategorii = value;
+					this.SendPropertyChanged("Id_Kategorii");
+					this.OnId_KategoriiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tabela_Kategorie_Tabela_Wydarzenia", Storage="_Tabela_Kategorie", ThisKey="Id_Kategorii", OtherKey="Id", IsForeignKey=true)]
+		public Tabela_Kategorie Tabela_Kategorie
+		{
+			get
+			{
+				return this._Tabela_Kategorie.Entity;
+			}
+			set
+			{
+				Tabela_Kategorie previousValue = this._Tabela_Kategorie.Entity;
+				if (((previousValue != value) 
+							|| (this._Tabela_Kategorie.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tabela_Kategorie.Entity = null;
+						previousValue.Tabela_Wydarzenia.Remove(this);
+					}
+					this._Tabela_Kategorie.Entity = value;
+					if ((value != null))
+					{
+						value.Tabela_Wydarzenia.Add(this);
+						this._Id_Kategorii = value.Id;
+					}
+					else
+					{
+						this._Id_Kategorii = default(int);
+					}
+					this.SendPropertyChanged("Tabela_Kategorie");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tabela_RL_Tabela_Wydarzenia", Storage="_Tabela_RL", ThisKey="Id_Uzytkownika", OtherKey="Id", IsForeignKey=true)]
+		public Tabela_RL Tabela_RL
+		{
+			get
+			{
+				return this._Tabela_RL.Entity;
+			}
+			set
+			{
+				Tabela_RL previousValue = this._Tabela_RL.Entity;
+				if (((previousValue != value) 
+							|| (this._Tabela_RL.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tabela_RL.Entity = null;
+						previousValue.Tabela_Wydarzenia.Remove(this);
+					}
+					this._Tabela_RL.Entity = value;
+					if ((value != null))
+					{
+						value.Tabela_Wydarzenia.Add(this);
+						this._Id_Uzytkownika = value.Id;
+					}
+					else
+					{
+						this._Id_Uzytkownika = default(int);
+					}
+					this.SendPropertyChanged("Tabela_RL");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tabela_Kategorie")]
+	public partial class Tabela_Kategorie : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Nazwa;
+		
+		private EntitySet<Tabela_Wydarzenia> _Tabela_Wydarzenia;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNazwaChanging(string value);
+    partial void OnNazwaChanged();
+    #endregion
+		
+		public Tabela_Kategorie()
+		{
+			this._Tabela_Wydarzenia = new EntitySet<Tabela_Wydarzenia>(new Action<Tabela_Wydarzenia>(this.attach_Tabela_Wydarzenia), new Action<Tabela_Wydarzenia>(this.detach_Tabela_Wydarzenia));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nazwa", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nazwa
+		{
+			get
+			{
+				return this._Nazwa;
+			}
+			set
+			{
+				if ((this._Nazwa != value))
+				{
+					this.OnNazwaChanging(value);
+					this.SendPropertyChanging();
+					this._Nazwa = value;
+					this.SendPropertyChanged("Nazwa");
+					this.OnNazwaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tabela_Kategorie_Tabela_Wydarzenia", Storage="_Tabela_Wydarzenia", ThisKey="Id", OtherKey="Id_Kategorii")]
+		public EntitySet<Tabela_Wydarzenia> Tabela_Wydarzenia
+		{
+			get
+			{
+				return this._Tabela_Wydarzenia;
+			}
+			set
+			{
+				this._Tabela_Wydarzenia.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Tabela_Wydarzenia(Tabela_Wydarzenia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tabela_Kategorie = this;
+		}
+		
+		private void detach_Tabela_Wydarzenia(Tabela_Wydarzenia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tabela_Kategorie = null;
 		}
 	}
 	
@@ -96,6 +632,8 @@ namespace AppCalendar
 		
 		private System.Data.Linq.Binary _Sol;
 		
+		private EntitySet<Tabela_Wydarzenia> _Tabela_Wydarzenia;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -112,6 +650,7 @@ namespace AppCalendar
 		
 		public Tabela_RL()
 		{
+			this._Tabela_Wydarzenia = new EntitySet<Tabela_Wydarzenia>(new Action<Tabela_Wydarzenia>(this.attach_Tabela_Wydarzenia), new Action<Tabela_Wydarzenia>(this.detach_Tabela_Wydarzenia));
 			OnCreated();
 		}
 		
@@ -175,7 +714,7 @@ namespace AppCalendar
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sol", DbType="VarBinary(64)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sol", DbType="VarBinary(64)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Sol
 		{
 			get
@@ -192,6 +731,19 @@ namespace AppCalendar
 					this.SendPropertyChanged("Sol");
 					this.OnSolChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tabela_RL_Tabela_Wydarzenia", Storage="_Tabela_Wydarzenia", ThisKey="Id", OtherKey="Id_Uzytkownika")]
+		public EntitySet<Tabela_Wydarzenia> Tabela_Wydarzenia
+		{
+			get
+			{
+				return this._Tabela_Wydarzenia;
+			}
+			set
+			{
+				this._Tabela_Wydarzenia.Assign(value);
 			}
 		}
 		
@@ -214,212 +766,17 @@ namespace AppCalendar
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tabela_Wydarzenia")]
-	public partial class Tabela_Wydarzenia
-	{
 		
-		private int _Id;
-		
-		private string _Nazwa;
-		
-		private System.DateTime _Data;
-		
-		private System.Nullable<System.TimeSpan> _Godzina;
-		
-		private string _Opis;
-		
-		private string _Miejsce;
-		
-		private string _Kategoria;
-		
-		private string _Goscie;
-		
-		private string _Notatka;
-		
-		private string _Kolor;
-		
-		private System.Nullable<int> _Priorytet;
-		
-		public Tabela_Wydarzenia()
+		private void attach_Tabela_Wydarzenia(Tabela_Wydarzenia entity)
 		{
+			this.SendPropertyChanging();
+			entity.Tabela_RL = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
-		public int Id
+		private void detach_Tabela_Wydarzenia(Tabela_Wydarzenia entity)
 		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nazwa", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Nazwa
-		{
-			get
-			{
-				return this._Nazwa;
-			}
-			set
-			{
-				if ((this._Nazwa != value))
-				{
-					this._Nazwa = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="Date NOT NULL")]
-		public System.DateTime Data
-		{
-			get
-			{
-				return this._Data;
-			}
-			set
-			{
-				if ((this._Data != value))
-				{
-					this._Data = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Godzina", DbType="Time")]
-		public System.Nullable<System.TimeSpan> Godzina
-		{
-			get
-			{
-				return this._Godzina;
-			}
-			set
-			{
-				if ((this._Godzina != value))
-				{
-					this._Godzina = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Opis", DbType="NVarChar(200)")]
-		public string Opis
-		{
-			get
-			{
-				return this._Opis;
-			}
-			set
-			{
-				if ((this._Opis != value))
-				{
-					this._Opis = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Miejsce", DbType="NVarChar(200)")]
-		public string Miejsce
-		{
-			get
-			{
-				return this._Miejsce;
-			}
-			set
-			{
-				if ((this._Miejsce != value))
-				{
-					this._Miejsce = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kategoria", DbType="NVarChar(50)")]
-		public string Kategoria
-		{
-			get
-			{
-				return this._Kategoria;
-			}
-			set
-			{
-				if ((this._Kategoria != value))
-				{
-					this._Kategoria = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Goscie", DbType="NVarChar(200)")]
-		public string Goscie
-		{
-			get
-			{
-				return this._Goscie;
-			}
-			set
-			{
-				if ((this._Goscie != value))
-				{
-					this._Goscie = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notatka", DbType="NVarChar(200)")]
-		public string Notatka
-		{
-			get
-			{
-				return this._Notatka;
-			}
-			set
-			{
-				if ((this._Notatka != value))
-				{
-					this._Notatka = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kolor", DbType="NVarChar(20)")]
-		public string Kolor
-		{
-			get
-			{
-				return this._Kolor;
-			}
-			set
-			{
-				if ((this._Kolor != value))
-				{
-					this._Kolor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Priorytet", DbType="Int")]
-		public System.Nullable<int> Priorytet
-		{
-			get
-			{
-				return this._Priorytet;
-			}
-			set
-			{
-				if ((this._Priorytet != value))
-				{
-					this._Priorytet = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.Tabela_RL = null;
 		}
 	}
 }

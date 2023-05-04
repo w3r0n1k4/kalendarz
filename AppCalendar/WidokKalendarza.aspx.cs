@@ -38,7 +38,7 @@ namespace AppCalendar
             MiejsceLabel.Visible = false;
             MiejsceBox.Visible = false;
             KategoriaLabel.Visible = false;
-            KategoriaBox.Visible = false;
+            KategoriaList.Visible = false;
             GoscieLabel.Visible = false;
             GoscieBox.Visible = false;
             NotatkaLabel.Visible = false;
@@ -64,7 +64,7 @@ namespace AppCalendar
             MiejsceLabel.Visible = true;
             MiejsceBox.Visible = true;
             KategoriaLabel.Visible = true;
-            KategoriaBox.Visible = true;
+            KategoriaList.Visible = true;
             GoscieLabel.Visible = true;
             GoscieBox.Visible = true;
             NotatkaLabel.Visible = true;
@@ -74,57 +74,40 @@ namespace AppCalendar
             PriorytetLabel.Visible = true;
             PriorytetBox.Visible = true;
             ZapiszButton.Visible = true;
+
+            var dc = new DataClasses2DataContext();
+            var kategorie = dc.Tabela_Kategorie.ToList();
+            KategoriaList.DataSource = kategorie;
+            KategoriaList.DataTextField = "Nazwa";
+            KategoriaList.DataValueField = "Id";
+            KategoriaList.DataBind();
+
         }
 
         protected void ZapiszButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
+            int user_id = Int32.Parse(Session["user_id"].ToString());
+            //int user_id = 43;
 
-            string nazwa = NazwaBox.Text;
-
-            DateTime data = DateTime.Parse(DataBox.Text);
-
-            string timeString = GodzinaBox.Text;
-            TimeSpan godzina = TimeSpan.Parse(timeString);
-
-            string opis = OpisBox.Text;
-            string miejsce = MiejsceBox.Text;
-            string kategoria = KategoriaBox.Text;
-            string goscie = GoscieBox.Text;
-            string notatka = NotatkaBox.Text;
-            string kolor = KolorBox.Text;
-            int  priorytet = int.Parse(PriorytetBox.Text); 
-      
-            //int user_id = Int32.Parse(Session["user_id"].ToString());
-            int user_id = 42;
-
-            string insertQuery = "INSERT INTO Tabela_Wydarzenia (Id, Nazwa, Data, Godzina, Opis, Miejsce, Kategoria, Goscie, Notatka, Kolor, Priorytet) VALUES (@Id, @Nazwa, @Data, @Godzina, @Opis, @Miejsce, @Kategoria, @Goscie, @Notatka, @Kolor, @Priorytet)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            var dc = new DataClasses2DataContext();
+            var noweWydarzenie = new Tabela_Wydarzenia
             {
-                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
-                {
-                    insertCommand.Parameters.AddWithValue("@Id", user_id);
-                    insertCommand.Parameters.AddWithValue("@Nazwa", nazwa);
-                    insertCommand.Parameters.AddWithValue("@Data", data);
-                    insertCommand.Parameters.AddWithValue("@Godzina", godzina);
-                    insertCommand.Parameters.AddWithValue("@Opis", opis);
-                    insertCommand.Parameters.AddWithValue("@Miejsce", miejsce);
-                    insertCommand.Parameters.AddWithValue("@Kategoria", kategoria);
-                    insertCommand.Parameters.AddWithValue("@Goscie", goscie);
-                    insertCommand.Parameters.AddWithValue("@Notatka", notatka);
-                    insertCommand.Parameters.AddWithValue("@Kolor", kolor);
-                    insertCommand.Parameters.AddWithValue("@Priorytet", priorytet);
+                Nazwa = NazwaBox.Text,
+                Data = Convert.ToDateTime(DataBox.Text),
+                Godzina = TimeSpan.Parse(GodzinaBox.Text),
+                Opis = OpisBox.Text,
+                Miejsce = MiejsceBox.Text,
+                Goscie = GoscieBox.Text,
+                Notatka = NotatkaBox.Text,
+                Kolor = KolorBox.Text,
+                Priorytet = Convert.ToInt32(PriorytetBox.Text),
+                Id_Uzytkownika = user_id,
+                Id_Kategorii = Convert.ToInt32(KategoriaList.SelectedValue)
+            };
 
-                    connection.Open();
-                    int rowsAffected = insertCommand.ExecuteNonQuery();
+            dc.Tabela_Wydarzenia.InsertOnSubmit(noweWydarzenie);
+            dc.SubmitChanges();
 
-                    if (rowsAffected > 0)
-                    {
-                        //InfoLabelDW.Text = "Dodano wydarzenie!";
-                    }
-                }
-            }
 
             DodajWydarzenieButton.Visible = true;
             NazwaLabel.Visible = false;
@@ -138,7 +121,7 @@ namespace AppCalendar
             MiejsceLabel.Visible = false;
             MiejsceBox.Visible = false;
             KategoriaLabel.Visible = false;
-            KategoriaBox.Visible = false;
+            KategoriaList.Visible = false;
             GoscieLabel.Visible = false;
             GoscieBox.Visible = false;
             NotatkaLabel.Visible = false;
@@ -151,5 +134,4 @@ namespace AppCalendar
 
         }
     }
-
 }

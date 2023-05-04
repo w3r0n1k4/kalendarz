@@ -19,7 +19,7 @@
             <asp:Label ID="GodzinaLabel" runat="server" Text="Godzina:     " Visible="false" ></asp:Label><asp:TextBox ID="GodzinaBox" runat="server" TextMode="Time" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="OpisLabel" runat="server" Text="Opis:     " Visible="false"></asp:Label><asp:TextBox ID="OpisBox" runat="server" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="MiejsceLabel" runat="server" Text="Miejsce:     " Visible="false"></asp:Label><asp:TextBox ID="MiejsceBox" runat="server" Visible="false"></asp:TextBox><br/>
-            <asp:Label ID="KategoriaLabel" runat="server" Text="Kategoria:     " Visible="false"></asp:Label><asp:TextBox ID="KategoriaBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="KategoriaLabel" runat="server" Text="Kategoria:     " Visible="false"></asp:Label><asp:DropDownList ID="KategoriaList" runat="server"  Visible="false"></asp:DropDownList><br/>
             <asp:Label ID="GoscieLabel" runat="server" Text="Goście:     " Visible="false"></asp:Label><asp:TextBox ID="GoscieBox" runat="server" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="NotatkaLabel" runat="server" Text="Notatka:     " Visible="false"></asp:Label><asp:TextBox ID="NotatkaBox" runat="server" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="KolorLabel" runat="server" Text="Kolor:     " Visible="false"></asp:Label><asp:TextBox ID="KolorBox" runat="server" TextMode="Color" Visible="false"></asp:TextBox><br/>
@@ -27,24 +27,6 @@
             <asp:Button ID="ZapiszButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszButton_Click" />
             <asp:Label ID="InfoLabelDW" runat="server" Text=""></asp:Label>
         </div>
-        <!--       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource1">
-             <Columns>
-                 <asp:BoundField DataField="Nazwa" HeaderText="Nazwa" ReadOnly="True" SortExpression="Nazwa" />
-                 <asp:BoundField DataField="Data" HeaderText="Data" ReadOnly="True" SortExpression="Data" />
-                 <asp:BoundField DataField="Opis" HeaderText="Opis" ReadOnly="True" SortExpression="Opis" />
-                 <asp:BoundField DataField="Godzina" HeaderText="Godzina" ReadOnly="True" SortExpression="Godzina" />
-                 <asp:BoundField DataField="Miejsce" HeaderText="Miejsce" ReadOnly="True" SortExpression="Miejsce" />
-                 <asp:BoundField DataField="Kategoria" HeaderText="Kategoria" ReadOnly="True" SortExpression="Kategoria" />
-                 <asp:BoundField DataField="Priorytet" HeaderText="Priorytet" ReadOnly="True" SortExpression="Priorytet" />
-                 <asp:BoundField DataField="Notatka" HeaderText="Notatka" ReadOnly="True" SortExpression="Notatka" />
-                 <asp:BoundField DataField="Goscie" HeaderText="Goscie" ReadOnly="True" SortExpression="Goscie" />
-             </Columns>
-         </asp:GridView>
-         <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="AppCalendar.DataClasses2DataContext" EntityTypeName="" Select="new (Nazwa, Data, Opis, Godzina, Miejsce, Kategoria, Priorytet, Notatka, Goscie)" TableName="Tabela_Wydarzenia" Where="Data == @Data">
-             <WhereParameters>
-                 <asp:ControlParameter ControlID="Kalendarz" Name="Data" PropertyName="SelectedDate" Type="DateTime" />
-             </WhereParameters>
-         </asp:LinqDataSource> -->
     </form>
 </body>
 </html>

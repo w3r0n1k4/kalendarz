@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListaToDo.aspx.cs" Inherits="AppCalendar.ListaToDo" %>
+﻿<%@ Page EnableEventValidation="false" Language="C#" AutoEventWireup="true" CodeBehind="ListaToDo.aspx.cs" Inherits="AppCalendar.ListaToDo" %>
 
 <!DOCTYPE html>
 
@@ -10,24 +10,33 @@
 </head>
 <body>
    <p style="font-size: 16px; font-family: sans-serif; font-weight: bold;">TWOJA LISTA TO DO:</p>
-<asp:ListView ID="ListView" runat="server">
+<form id="form1" runat="server">
+<asp:ListView ID="ListView" runat="server" DataKeyNames="Id" OnSelectedIndexChanged="ListView_SelectedIndexChanged" OnItemCommand="ListView_ItemCommand">
     <ItemTemplate>
-        <ul>
-            <li <%# Convert.ToDateTime(Eval("Data")).Date < DateTime.Now.Date ? "style=\"text-decoration: line-through\"" : "" %>>
-                <strong>Nazwa:</strong> <%# Eval("Nazwa") %> <br />
-                <strong>Data:</strong> <%# Eval("Data", "{0:d}") %> <br />
-                <strong>Godzina:</strong> <%# Eval("Godzina", "{0:t}") %> <br />
-                <strong>Opis:</strong> <%# Eval("Opis") %> <br />
-                <strong>Miejsce:</strong> <%# Eval("Miejsce") %> <br />
-                <strong>Kategoria:</strong> <%# Eval("Kategoria") %> <br />
-                <strong>Goście:</strong> <%# Eval("Goscie") %> <br />
-                <strong>Notatka:</strong> <%# Eval("Notatka") %> <br />
-                <strong>Kolor:</strong> <%# Eval("Kolor") %> <br />
-                <strong>Priorytet:</strong> <span style="font-weight:bold; color:red"><%# Eval("Priorytet") %></span><br/>
-            </li>
-        </ul>
-    </ItemTemplate>
+    <ul>
+        <li <%# Convert.ToDateTime(Eval("Data")).Date < DateTime.Now.Date ? "style=\"text-decoration: line-through\"" : "" %>>
+            <strong>Nazwa: </strong> <%# Eval("Nazwa") %> <br />
+            <strong>Data: </strong> <%# Eval("Data", "{0:d}") %> <br />
+            <strong>Godzina: </strong> <%# Eval("Godzina", "{0:t}") %> <br />
+            <strong>Opis: </strong> <%# Eval("Opis") %> <br />
+            <strong>Miejsce: </strong> <%# Eval("Miejsce") %> <br />
+            <strong>Goście: </strong> <%# Eval("Goscie") %> <br />
+            <strong>Notatka: </strong> <%# Eval("Notatka") %> <br />
+            <strong>Kolor: </strong><span style="color:<%# Eval("Kolor").ToString() %>"><%# Eval("Kolor") %></span> <br />
+            <strong>Priorytet: </strong> <span style="font-weight:bold; color:red"><%# Eval("Priorytet") %></span><br/>
+            <asp:Panel runat="server" Visible='<%# Convert.ToDateTime(Eval("Data")).Date < DateTime.Now.Date %>'>
+                <asp:Button ID="UsunButtonWM" runat="server" Text="Usuń" CommandName="Delete" CommandArgument='<%# Eval("Id") %>' />
+            </asp:Panel>
+            <asp:Panel runat="server" Visible='<%# Convert.ToDateTime(Eval("Data")).Date >= DateTime.Now.Date %>'>
+                <asp:Button ID="EdytujButtonW" runat="server" Text="Edytuj" CommandName="Edit" CommandArgument='<%# Eval("Id") %>' />
+                <asp:Button ID="UsunButtonW" runat="server" Text="Usuń" CommandName="Delete" CommandArgument='<%# Eval("Id") %>' />
+                <asp:TextBox ID="WpisznNoweDaneBox" runat="server" Visible="false" Text='<%# Eval("Nazwa") %>' />
+                <asp:Button  ID="ZapiszEdycjeWButton" runat="server" Text="Zapisz" Visible="false" CommandName="Update" CommandArgument='<%# Eval("Id") %>' />
+            </asp:Panel>
+        </li>
+    </ul>
+</ItemTemplate>
 </asp:ListView>
-
+</form>
 </body>
 </html>
