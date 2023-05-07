@@ -119,3 +119,4 @@ D:\UŁ\AppCalendar\AppCalendar\obj\Debug\AppCalendar.csproj.CoreCompileInputs.ca
 D:\UŁ\AppCalendar\AppCalendar\obj\Debug\AppCalendar.csproj.CopyComplete
 D:\UŁ\AppCalendar\AppCalendar\obj\Debug\AppCalendar.dll
 D:\UŁ\AppCalendar\AppCalendar\obj\Debug\AppCalendar.pdb
+D:\UŁ\AppCalendar\AppCalendar\obj\Debug\AppCalendar.csproj.AssemblyReference.cache

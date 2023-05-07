@@ -17,16 +17,16 @@ namespace AppCalendar
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
             //int user_id = 43;
+
             var dc = new DataClasses2DataContext();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
             ListView.DataSource = wydarzenia;
             ListView.DataBind();
         }
 
-
         protected void ListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+     
         }
         protected void ListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {

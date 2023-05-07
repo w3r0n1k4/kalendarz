@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Windows;
 
@@ -26,6 +27,29 @@ namespace AppCalendar
 
         protected void Kalendarz_SelectionChanged(object sender, EventArgs e)
         {
+            int user_id = Int32.Parse(Session["user_id"].ToString());
+            //int user_id = 43;
+
+            var dc = new DataClasses2DataContext();
+            var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
+
+            foreach (var wydarzenie in wydarzenia)
+            {
+                var div = new HtmlGenericControl("div");
+                if (wydarzenie.Data < DateTime.Now)
+                {
+                    var s = new HtmlGenericControl("s");
+                    s.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                    div.Controls.Add(s);
+                }
+                else
+                {
+                    div.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                }
+                Controls.Add(div);
+            }
+
+
             DodajWydarzenieButton.Visible = true;
             NazwaLabel.Visible = false;
             NazwaBox.Visible = false;
