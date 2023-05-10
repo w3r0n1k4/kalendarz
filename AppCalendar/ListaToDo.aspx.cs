@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,6 +17,7 @@ namespace AppCalendar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             int user_id = Int32.Parse(Session["user_id"].ToString());
             //int user_id = 43;
 
@@ -24,20 +27,36 @@ namespace AppCalendar
             ListView.DataBind();
         }
 
-        protected void ListView_SelectedIndexChanged(object sender, EventArgs e)
+        protected void UsunButtonW_Click(object sender, EventArgs e)
         {
-     
+            int id = Convert.ToInt32((sender as Button).CommandArgument);
+
+            var dc = DataContextSingleton.GetInstance();
+            var wydarzenie = dc.Tabela_Wydarzenia.FirstOrDefault(w => w.Id == id);
+
+            if (wydarzenie != null)
+            {
+                dc.Tabela_Wydarzenia.DeleteOnSubmit(wydarzenie);
+                dc.SubmitChanges();
+
+                int user_id = Int32.Parse(Session["user_id"].ToString());
+                //int user_id = 43;
+
+                var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
+                ListView.DataSource = wydarzenia;
+                ListView.DataBind();
+            }
         }
-        protected void ListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+
+        protected void EdytujButtonW_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "Edit")
-            {
-                MessageBox.Show("Działa edytuj!");  //tylko żeby sprawdzić, czy działa przycisk, ze względu na to, że nie działa
-            }
-            else if (e.CommandName == "Delete")
-            {
-                MessageBox.Show("Działa usuń!");
-            }
+            MessageBox.Show("Działa edytuj!");
         }
+
+        protected void ZapiszEdycjeButtonW_Click(object sender, EventArgs e)
+        {
+           
+        }
+
     }
 }
