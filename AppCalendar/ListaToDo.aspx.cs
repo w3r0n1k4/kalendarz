@@ -18,7 +18,7 @@ namespace AppCalendar
             int user_id = Int32.Parse(Session["user_id"].ToString());
             //int user_id = 43;
 
-            var dc = new DataClasses2DataContext();
+            var dc = DataContextSingleton.GetInstance();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
             ListView.DataSource = wydarzenia;
             ListView.DataBind();

@@ -30,7 +30,7 @@ namespace AppCalendar
             int user_id = Int32.Parse(Session["user_id"].ToString());
             //int user_id = 43;
 
-            var dc = new DataClasses2DataContext();
+            var dc = DataContextSingleton.GetInstance();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
 
             foreach (var wydarzenie in wydarzenia)
@@ -113,7 +113,7 @@ namespace AppCalendar
             int user_id = Int32.Parse(Session["user_id"].ToString());
             //int user_id = 43;
 
-            var dc = new DataClasses2DataContext();
+            var dc = DataContextSingleton.GetInstance();
             var noweWydarzenie = new Tabela_Wydarzenia
             {
                 Nazwa = NazwaBox.Text,
@@ -131,7 +131,6 @@ namespace AppCalendar
 
             dc.Tabela_Wydarzenia.InsertOnSubmit(noweWydarzenie);
             dc.SubmitChanges();
-
 
             DodajWydarzenieButton.Visible = true;
             NazwaLabel.Visible = false;
