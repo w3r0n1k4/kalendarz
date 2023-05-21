@@ -81,6 +81,7 @@
     <Content Include="App_Data\DataBase_log.ldf">
       <DependentUpon>DataBase.mdf</DependentUpon>
     </Content>
+    <Content Include="EdycjaDanych.aspx" />
     <Content Include="ListaToDo.aspx" />
     <Content Include="Logowanie.aspx" />
     <Content Include="PomyslneLog.aspx" />
@@ -96,6 +97,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses2.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="EdycjaDanych.aspx.cs">
+      <DependentUpon>EdycjaDanych.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EdycjaDanych.aspx.designer.cs">
+      <DependentUpon>EdycjaDanych.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaToDo.aspx.cs">
       <DependentUpon>ListaToDo.aspx</DependentUpon>

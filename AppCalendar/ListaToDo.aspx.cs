@@ -18,13 +18,23 @@ namespace AppCalendar
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
+            //int user_id = Int32.Parse(Session["user_id"].ToString());
+            int user_id = 42;
 
             var dc = DataContextSingleton.GetInstance();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
             ListView.DataSource = wydarzenia;
             ListView.DataBind();
+            /*
+            if (IsPostBack)
+            {
+                if (Request.Form["operacja"] == "Edit")
+                {
+                    Response.Redirect("www.wp.pl");
+                }
+
+            }
+            */
         }
 
         protected void UsunButtonW_Click(object sender, EventArgs e)
@@ -39,8 +49,8 @@ namespace AppCalendar
                 dc.Tabela_Wydarzenia.DeleteOnSubmit(wydarzenie);
                 dc.SubmitChanges();
 
-                int user_id = Int32.Parse(Session["user_id"].ToString());
-                //int user_id = 43;
+                //int user_id = Int32.Parse(Session["user_id"].ToString());
+                int user_id = 42;
 
                 var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
                 ListView.DataSource = wydarzenia;
@@ -50,7 +60,12 @@ namespace AppCalendar
 
         protected void EdytujButtonW_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Działa edytuj!");
+            // Pobierz identyfikator elementu do edycji
+            Button edytujButton = (Button)sender;
+            string id = edytujButton.CommandArgument;
+
+            // Przekieruj na stronę edycji z przekazanym identyfikatorem jako parametrem w adresie URL
+            Response.Redirect("EdycjaDanych.aspx?id=" + id);
         }
 
         protected void ZapiszEdycjeButtonW_Click(object sender, EventArgs e)

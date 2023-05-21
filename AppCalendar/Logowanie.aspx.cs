@@ -20,7 +20,7 @@ namespace AppCalendar
 
         protected void ZalogujButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\KOMputer\Desktop\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             string selectQuery1 = "SELECT Haslo, Sol FROM Tabela_RL WHERE Email='" + EmailBoxL.Text + "'";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
