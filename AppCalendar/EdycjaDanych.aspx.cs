@@ -13,7 +13,7 @@ namespace AppCalendar
         protected void Page_Load(object sender, EventArgs e)
         {
             //int user_id = Int32.Parse(Session["user_id"].ToString());
-            int user_id = 42;
+            int user_id = 1;
 
 
             if (!Page.IsPostBack)
@@ -66,6 +66,7 @@ namespace AppCalendar
                 string opis = OpisBox.Text;
                 string miejsce = MiejsceBox.Text;
                 int kategoriaId = int.Parse(KategoriaList.SelectedValue);
+               
                 // Pobierz wartości z pozostałych textboxów itd.
 
                 // Zaktualizuj rekord w bazie danych

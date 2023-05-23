@@ -12,7 +12,7 @@
      <form id="form1" runat="server">
          <div draggable="auto">
             <asp:Calendar ID="Kalendarz" runat="server" OnSelectionChanged="Kalendarz_SelectionChanged"  DayRender="Kalendarz_DayRender" Height="238px" Width="1160px"></asp:Calendar>
-            <p style="font-size: 12px; font-family: sans-serif;"><a href="https://localhost:44360/ListaToDo.aspx">LISTA TO DO ZE SZCZEGÓŁAMI I EDYCJA/USUWANIE WYDARZEŃ</a></p>
+            <p style="font-size: 12px; font-family: sans-serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona glowna.  </a> <a href="https://localhost:44360/ListaToDo.aspx">Lista to do.  </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia.</a></p>
             <asp:Button ID="DodajWydarzenieButton" runat="server" Text="Dodaj wydarzenie" Visible="false" OnClick="DodajWydarzenieButton_Click" />
             <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="false" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="DataLabel" runat="server" Text="Data:     " Visible="false" ></asp:Label><asp:TextBox ID="DataBox" runat="server" TextMode="Date" Visible="false"></asp:TextBox><br/>

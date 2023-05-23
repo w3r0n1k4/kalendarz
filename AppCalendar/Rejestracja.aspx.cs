@@ -21,7 +21,7 @@ namespace AppCalendar
 
         protected void ZarejestrujButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\KOMputer\Desktop\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\uuero\Source\Repos\calendar\AppCalendar\App_Data\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             string email = EmailBoxR.Text;
             string haslo = HasloBoxR.Text;
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(haslo))

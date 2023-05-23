@@ -88,6 +88,7 @@
     <Content Include="Rejestracja.aspx" />
     <Content Include="StronaGlowna.aspx" />
     <Content Include="Styl.css" />
+    <Content Include="Szukaj.aspx" />
     <Content Include="Web.config" />
     <Content Include="WidokKalendarza.aspx" />
   </ItemGroup>
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="StronaGlowna.aspx.designer.cs">
       <DependentUpon>StronaGlowna.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Szukaj.aspx.cs">
+      <DependentUpon>Szukaj.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Szukaj.aspx.designer.cs">
+      <DependentUpon>Szukaj.aspx</DependentUpon>
     </Compile>
     <Compile Include="WidokKalendarza.aspx.cs">
       <DependentUpon>WidokKalendarza.aspx</DependentUpon>

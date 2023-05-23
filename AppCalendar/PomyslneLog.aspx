@@ -27,7 +27,9 @@
              <asp:Label ID="InfoLabelPL3" runat="server" Text=""></asp:Label>
              <br/>
     <div style="text-align: center; height: 300px;">
-        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/WidokKalendarza.aspx">PRZEJDŹ DO KALENDARZA</a></p>
+        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/WidokKalendarza.aspx">Kalendarz.</a></p>
+        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/ListaToDo.aspx">Lista to do.</a></p>
+        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/Szukaj.aspx">Wyszukaj wydarzenie.</a></p>
     </div>
          </div>
         </div>
