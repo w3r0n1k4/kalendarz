@@ -13,9 +13,9 @@
     <form id="form1" runat="server">
         <div class="STRONA">
         <div class="BOX">
-        <p style="font-size: 43px;font-family: sans-serif; text-align: initial;">LOGOWANIE</p>
+        <p style="font-size: 40px;font-family: serif; text-align: initial; font-weight: bold">Logowanie</p>
             <table style="width: 100%;">
-            <tbody style="font-family: sans-serif;">
+            <tbody style="font-size: 20px; font-family: serif;">
                 <tr>
                     <td stle="padding: 18px; ">E-mail: </td>
                     <td>

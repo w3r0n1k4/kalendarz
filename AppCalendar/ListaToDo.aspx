@@ -9,8 +9,8 @@
     <link href="Styl.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <p style="font-size: 12px; font-family: sans-serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona glowna.  </a> <a href="https://localhost:44360/Szukaj.aspx">Szukaj wydarzenia.  </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz.</a></p>
-   <p style="font-size: 16px; font-family: sans-serif; font-weight: bold;">TWOJA LISTA TO DO:</p>
+   <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona glowna.  </a> <a href="https://localhost:44360/Szukaj.aspx">Szukaj wydarzenia.  </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz.</a></p>
+   <p style="font-size: 25px; font-family: serif; font-weight: bold;">Twoja lista to do:</p>
 <form id="form1" runat="server">
 <asp:ListView ID="ListView" runat="server" DataKeyNames="Id">
     <ItemTemplate>

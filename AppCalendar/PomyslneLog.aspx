@@ -12,13 +12,13 @@
 <body>
     <form id="form1" runat="server">
         <div class="STRONA">
-         <div style="height: 300px;">
-        <p style="font-size: 23px;">Zalogowano pomyślnie!</p>
-              <p style="font-size: 17px;">Id: <asp:Label ID="IdLabel" runat="server" Text=" "></asp:Label></p>
-              <p style="font-size: 17px; ">E-mail: <asp:Label ID="EmailLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujEmailButton" runat="server" Text="Edytuj"  Visible="true" style="margin-left: 10px;" OnClick="EdytujEmailButton_Click"/><asp:TextBox ID="WpiszNowyEmailBox" runat="server" Visible="false" ></asp:TextBox><asp:Button ID="ZapiszEdycjeEButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeEButton_Click" />
+        <div style="height: 300px;">
+        <p style="font-size: 25px; font-family: serif">Zalogowano pomyślnie!</p>
+              <p style="font-size: 20px; font-family: serif;">Id: <asp:Label ID="IdLabel" runat="server" Text=" "></asp:Label></p>
+              <p style="font-size: 20px; font-family: serif;">E-mail: <asp:Label ID="EmailLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujEmailButton" runat="server" Text="Edytuj"  Visible="true" style="margin-left: 10px;" OnClick="EdytujEmailButton_Click"/><asp:TextBox ID="WpiszNowyEmailBox" runat="server" Visible="false" ></asp:TextBox><asp:Button ID="ZapiszEdycjeEButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeEButton_Click" />
                   <asp:Label ID="InfoLabelPL1" runat="server" Text=""></asp:Label>
              </p>
-              <p style="font-size: 17px;">Hasło: <asp:Label ID="HasloLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujHasloButton" runat="server" Text="Edytuj" Visible="true" style="margin-left: 10px;" OnClick="EdytujHasloButton_Click" /><asp:TextBox ID="WpiszNoweHasloBox" runat="server"  Visible="false"></asp:TextBox><asp:Button ID="ZapiszEdycjeHButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeHButton_Click"/>
+              <p style="font-size: 20px; font-family: serif;">Hasło: <asp:Label ID="HasloLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujHasloButton" runat="server" Text="Edytuj" Visible="true" style="margin-left: 10px;" OnClick="EdytujHasloButton_Click" /><asp:TextBox ID="WpiszNoweHasloBox" runat="server"  Visible="false"></asp:TextBox><asp:Button ID="ZapiszEdycjeHButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeHButton_Click"/>
                   <asp:Label ID="InfoLabelPL2" runat="server" Text=""></asp:Label>
              </p>
 
@@ -27,9 +27,9 @@
              <asp:Label ID="InfoLabelPL3" runat="server" Text=""></asp:Label>
              <br/>
     <div style="text-align: center; height: 300px;">
-        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/WidokKalendarza.aspx">Kalendarz.</a></p>
-        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/ListaToDo.aspx">Lista to do.</a></p>
-        <p style="font-size: 32px; font-family: sans-serif;"><a href="https://localhost:44360/Szukaj.aspx">Wyszukaj wydarzenie.</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/WidokKalendarza.aspx">Kalendarz.</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/ListaToDo.aspx">Lista to do.</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/Szukaj.aspx">Wyszukaj wydarzenie.</a></p>
     </div>
          </div>
         </div>

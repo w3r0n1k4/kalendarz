@@ -20,8 +20,61 @@ namespace AppCalendar
             {
                 Kalendarz.SelectedDate = DateTime.Today;
                 DataBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                
                 Kalendarz.SelectedDayStyle.BackColor = System.Drawing.Color.CornflowerBlue;
+                DodajWydarzenieButton.Visible = true;
 
+                //int user_id = Int32.Parse(Session["user_id"].ToString());
+                int user_id = 1;
+
+                var dc = DataContextSingleton.GetInstance();
+                var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
+
+                foreach (var wydarzenie in wydarzenia)
+                {
+                    var div = new HtmlGenericControl("div");
+
+                    if (wydarzenie.Data < DateTime.Now && wydarzenie.Godzina < DateTime.Now.TimeOfDay)
+                    {
+                        var s = new HtmlGenericControl("s");
+                        s.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                        if (wydarzenie.Godzina != null)
+                        {
+                            s.InnerHtml += (" o godzinie ") + wydarzenie.Godzina.ToString();
+                        }
+
+                        if (wydarzenie.Miejsce != "")
+                        {
+                            s.InnerHtml += (" w ") + wydarzenie.Miejsce;
+                        }
+
+                        if (wydarzenie.Goscie != "")
+                        {
+                            s.InnerHtml += (" z ") + wydarzenie.Goscie;
+                        }
+
+                        div.Controls.Add(s);
+                    }
+                    else
+                    {
+                        div.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                        if (wydarzenie.Godzina != null)
+                        {
+                            div.InnerHtml += (" o godzinie ") + wydarzenie.Godzina.ToString();
+                        }
+
+                        if (wydarzenie.Miejsce != "")
+                        {
+                            div.InnerHtml += (" w ") + wydarzenie.Miejsce;
+                        }
+
+                        if (wydarzenie.Goscie != "")
+                        {
+                            div.InnerHtml += (" z ") + wydarzenie.Goscie;
+                        }
+                    }
+                    Controls.Add(div);
+                }
             }
         }
 
@@ -36,18 +89,48 @@ namespace AppCalendar
             foreach (var wydarzenie in wydarzenia)
             {
                 var div = new HtmlGenericControl("div");
-                if (wydarzenie.Data < DateTime.Now)
+
+                if (wydarzenie.Data < DateTime.Now && wydarzenie.Godzina < DateTime.Now.TimeOfDay)
                 {
                     var s = new HtmlGenericControl("s");
                     s.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                    if (wydarzenie.Godzina != null)
+                    {
+                        s.InnerHtml += (" o godzinie ") + wydarzenie.Godzina.ToString();
+                    }
+
+                    if (wydarzenie.Miejsce != "")
+                    {
+                        s.InnerHtml += (" w ") + wydarzenie.Miejsce;
+                    }
+
+                    if (wydarzenie.Goscie != "")
+                    {
+                        s.InnerHtml += (" z ") + wydarzenie.Goscie;
+                    }
+
                     div.Controls.Add(s);
                 }
                 else
                 {
                     div.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                    if (wydarzenie.Godzina != null)
+                    {
+                        div.InnerHtml += (" o godzinie ") + wydarzenie.Godzina.ToString();
+                    }
+
+                    if (wydarzenie.Miejsce != "")
+                    {
+                        div.InnerHtml += (" w ") + wydarzenie.Miejsce;
+                    }
+
+                    if (wydarzenie.Goscie != "")
+                    {
+                        div.InnerHtml += (" z ") + wydarzenie.Goscie;
+                    }                    
                 }
                 Controls.Add(div);
-            }
+            } 
 
 
             DodajWydarzenieButton.Visible = true;
@@ -76,6 +159,11 @@ namespace AppCalendar
 
         protected void DodajWydarzenieButton_Click(object sender, EventArgs e)
         {
+            DataBox.Text = Kalendarz.SelectedDate.ToString("yyyy-MM-dd");
+
+            // znika widok dzisiejszy
+            LabelDzisiaj.Visible = false;
+
             DodajWydarzenieButton.Visible = false;
             NazwaLabel.Visible = true;
             NazwaBox.Visible = true;
@@ -154,6 +242,58 @@ namespace AppCalendar
             PriorytetLabel.Visible = false;
             PriorytetBox.Visible = false;
             ZapiszButton.Visible = false;
+
+            // widok dziennu sie znowu pojawia
+
+            LabelDzisiaj.Visible = true;
+
+            var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
+
+            foreach (var wydarzenie in wydarzenia)
+            {
+                var div = new HtmlGenericControl("div");
+
+                if (wydarzenie.Data < DateTime.Now && wydarzenie.Godzina < DateTime.Now.TimeOfDay)
+                {
+                    var s = new HtmlGenericControl("s");
+                    s.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                    if (wydarzenie.Godzina != null)
+                    {
+                        s.InnerHtml += (" o godzinie ") + wydarzenie.Godzina.ToString();
+                    }
+
+                    if (wydarzenie.Miejsce != "")
+                    {
+                        s.InnerHtml += (" w ") + wydarzenie.Miejsce;
+                    }
+
+                    if (wydarzenie.Goscie != "")
+                    {
+                        s.InnerHtml += (" z ") + wydarzenie.Goscie;
+                    }
+
+                    div.Controls.Add(s);
+                }
+                else
+                {
+                    div.InnerHtml = ("• ") + wydarzenie.Nazwa;
+                    if (wydarzenie.Godzina != null)
+                    {
+                        div.InnerHtml += (" o godzinie ") + wydarzenie.Godzina.ToString();
+                    }
+
+                    if (wydarzenie.Miejsce != "")
+                    {
+                        div.InnerHtml += (" w ") + wydarzenie.Miejsce;
+                    }
+
+                    if (wydarzenie.Goscie != "")
+                    {
+                        div.InnerHtml += (" z ") + wydarzenie.Goscie;
+                    }
+                }
+                Controls.Add(div);
+            }
 
         }
     }
