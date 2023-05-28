@@ -18,14 +18,14 @@ namespace AppCalendar
         {
             if (!IsPostBack)
             {
+                int user_id = Int32.Parse(Session["user_id"].ToString());
+                //int user_id = 43;
+
                 Kalendarz.SelectedDate = DateTime.Today;
                 DataBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 
                 Kalendarz.SelectedDayStyle.BackColor = System.Drawing.Color.CornflowerBlue;
                 DodajWydarzenieButton.Visible = true;
-
-                //int user_id = Int32.Parse(Session["user_id"].ToString());
-                int user_id = 1;
 
                 var dc = DataContextSingleton.GetInstance();
                 var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
@@ -80,8 +80,8 @@ namespace AppCalendar
 
         protected void Kalendarz_SelectionChanged(object sender, EventArgs e)
         {
-            //int user_id = Int32.Parse(Session["user_id"].ToString());
-            int user_id = 1;
+            int user_id = Int32.Parse(Session["user_id"].ToString());
+            //int user_id = 43;
 
             var dc = DataContextSingleton.GetInstance();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
@@ -90,7 +90,7 @@ namespace AppCalendar
             {
                 var div = new HtmlGenericControl("div");
 
-                if (wydarzenie.Data < DateTime.Now && wydarzenie.Godzina < DateTime.Now.TimeOfDay)
+                if (wydarzenie.Data < DateTime.Now || (wydarzenie.Data == DateTime.Now.Date && wydarzenie.Godzina < DateTime.Now.TimeOfDay))
                 {
                     var s = new HtmlGenericControl("s");
                     s.InnerHtml = ("• ") + wydarzenie.Nazwa;
@@ -132,7 +132,6 @@ namespace AppCalendar
                 Controls.Add(div);
             } 
 
-
             DodajWydarzenieButton.Visible = true;
             NazwaLabel.Visible = false;
             NazwaBox.Visible = false;
@@ -161,7 +160,6 @@ namespace AppCalendar
         {
             DataBox.Text = Kalendarz.SelectedDate.ToString("yyyy-MM-dd");
 
-            // znika widok dzisiejszy
             LabelDzisiaj.Visible = false;
 
             DodajWydarzenieButton.Visible = false;
@@ -193,13 +191,12 @@ namespace AppCalendar
             KategoriaList.DataTextField = "Nazwa";
             KategoriaList.DataValueField = "Id";
             KategoriaList.DataBind();
-
         }
 
         protected void ZapiszButton_Click(object sender, EventArgs e)
         {
-            //int user_id = Int32.Parse(Session["user_id"].ToString());
-            int user_id = 1;
+            int user_id = Int32.Parse(Session["user_id"].ToString());
+            //int user_id = 43;
 
             var dc = DataContextSingleton.GetInstance();
             var noweWydarzenie = new Tabela_Wydarzenia
@@ -242,8 +239,6 @@ namespace AppCalendar
             PriorytetLabel.Visible = false;
             PriorytetBox.Visible = false;
             ZapiszButton.Visible = false;
-
-            // widok dziennu sie znowu pojawia
 
             LabelDzisiaj.Visible = true;
 
@@ -294,7 +289,6 @@ namespace AppCalendar
                 }
                 Controls.Add(div);
             }
-
         }
     }
 }

@@ -5,11 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Twoja ListaToDo</title>
+    <title>Twoja Lista To Do</title>
     <link href="Styl.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-   <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona glowna.  </a> <a href="https://localhost:44360/Szukaj.aspx">Szukaj wydarzenia.  </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz.</a></p>
+   <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
    <p style="font-size: 25px; font-family: serif; font-weight: bold;">Twoja lista to do:</p>
 <form id="form1" runat="server">
 <asp:ListView ID="ListView" runat="server" DataKeyNames="Id">
@@ -31,8 +31,6 @@
             <asp:Panel runat="server" Visible='<%# Convert.ToDateTime(Eval("Data")).Date >= DateTime.Now.Date %>'>
                 <asp:Button ID="EdytujButtonW" runat="server" Text="Edytuj" OnClick="EdytujButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
                 <asp:Button ID="UsunButtonW" runat="server" Text="Usuń" OnClick="UsunButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
-                <asp:TextBox ID="WpisznNoweDaneBox" runat="server" Visible="false" Text='<%# Eval("Nazwa") %>' />
-                <asp:Button  ID="ZapiszEdycjeButtonW" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
             </asp:Panel>
         </li>
     </ul>

@@ -9,6 +9,7 @@
     <link href="Styl.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
     <form id="form1" runat="server">
         <div draggable="auto">
              <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="true" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="true"></asp:TextBox><br/>
@@ -22,7 +23,7 @@
             <asp:Label ID="KolorLabel" runat="server" Text="Kolor:     " Visible="true"></asp:Label><asp:TextBox ID="KolorBox" runat="server" TextMode="Color" Visible="true"></asp:TextBox><br/>
             <asp:Label ID="PriorytetLabel" runat="server" Text="Prioryet:     " Visible="true"></asp:Label><asp:TextBox ID="PriorytetBox" runat="server" TextMode="Number" Visible="true" Min="1" Max="10"></asp:TextBox><br />
         </div>
-        <asp:Button ID="ZapiszEdit" runat="server" OnClick="ZapiszEdit_Click" Text="Zapisz" />
+        <asp:Button ID="ZapiszEdycjeButtonPW" runat="server" OnClick="ZapiszEdycjeButtonPW_Click" Text="Zapisz" />
     </form>
 </body>
 </html>

@@ -21,15 +21,14 @@
               <p style="font-size: 20px; font-family: serif;">Hasło: <asp:Label ID="HasloLabel" runat="server" Text=" " style="margin-right: 10px;"></asp:Label><asp:Button ID="EdytujHasloButton" runat="server" Text="Edytuj" Visible="true" style="margin-left: 10px;" OnClick="EdytujHasloButton_Click" /><asp:TextBox ID="WpiszNoweHasloBox" runat="server"  Visible="false"></asp:TextBox><asp:Button ID="ZapiszEdycjeHButton" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeHButton_Click"/>
                   <asp:Label ID="InfoLabelPL2" runat="server" Text=""></asp:Label>
              </p>
-
              <asp:Button ID="WylogujButton" runat="server" Text="Wyloguj" OnClick="WylogujButton_Click" /><br/>
              <asp:Button ID="UsunKontoButton" runat="server" Text="Usuń konto" OnClick="UsunKontoButton_Click" /><br/>
              <asp:Label ID="InfoLabelPL3" runat="server" Text=""></asp:Label>
              <br/>
     <div style="text-align: center; height: 300px;">
-        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/WidokKalendarza.aspx">Kalendarz.</a></p>
-        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/ListaToDo.aspx">Lista to do.</a></p>
-        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/Szukaj.aspx">Wyszukaj wydarzenie.</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/WidokKalendarza.aspx">Kalendarz</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/ListaToDo.aspx">Lista to do</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/Szukaj.aspx">Wyszukaj wydarzenie</a></p>
     </div>
          </div>
         </div>

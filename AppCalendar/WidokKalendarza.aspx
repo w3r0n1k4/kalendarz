@@ -11,7 +11,7 @@
 <body>
      <form id="form1" runat="server">
          <div draggable="auto">
-            <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona glowna.  </a> <a href="https://localhost:44360/ListaToDo.aspx">Lista to do.  </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia.</a></p>
+            <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia </a></p>
             <asp:Calendar ID="Kalendarz" runat="server" OnSelectionChanged="Kalendarz_SelectionChanged"  DayRender="Kalendarz_DayRender" Height="238px" Width="1160px"></asp:Calendar>
             
             <asp:Button ID="DodajWydarzenieButton" runat="server" Text="Dodaj wydarzenie" Visible="false" OnClick="DodajWydarzenieButton_Click" />

@@ -14,6 +14,7 @@ namespace AppCalendar
 {
     public partial class PomyslneLog : System.Web.UI.Page
     {
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
         protected void Page_Load(object sender, EventArgs e)
         {
             string email = Request.QueryString["email"];
@@ -21,7 +22,6 @@ namespace AppCalendar
 
             if (email != null && haslo != null)
             {
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\uuero\Source\Repos\calendar\AppCalendar\App_Data\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
 
@@ -68,7 +68,6 @@ namespace AppCalendar
             }
         }
 
-
         const int keySize = 64;
         const int iterations = 350000;
         HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
@@ -101,7 +100,6 @@ namespace AppCalendar
 
         protected void UsunKontoButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\uuero\Source\Repos\calendar\AppCalendar\App_Data\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
@@ -127,7 +125,6 @@ namespace AppCalendar
 
             string NowyEmail = WpiszNowyEmailBox.Text;
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\uuero\Source\Repos\calendar\AppCalendar\App_Data\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -176,7 +173,6 @@ namespace AppCalendar
                 return;
             }
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\uuero\Source\Repos\calendar\AppCalendar\App_Data\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 

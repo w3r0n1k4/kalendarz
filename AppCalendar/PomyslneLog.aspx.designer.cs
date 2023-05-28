@@ -1,10 +1,10 @@
 ﻿//------------------------------------------------------------------------------
-// <generowany automatycznie>
+// <generowane automatycznie>
 //     Ten kod został wygenerowany przez narzędzie.
 //
-//     Modyfikacje tego pliku mogą spowodować niewłaściwe zachowanie i zostaną utracone
+//     Zmiany w tym pliku mogą spowodować niewłaściwe zachowanie i zostaną utracone
 //     w przypadku ponownego wygenerowania kodu. 
-// </generowany automatycznie>
+// </generowane automatycznie>
 //------------------------------------------------------------------------------
 
 namespace AppCalendar
@@ -19,7 +19,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
@@ -28,7 +28,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label IdLabel;
 
@@ -37,7 +37,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label EmailLabel;
 
@@ -46,7 +46,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EdytujEmailButton;
 
@@ -55,7 +55,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox WpiszNowyEmailBox;
 
@@ -64,7 +64,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ZapiszEdycjeEButton;
 
@@ -73,7 +73,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label InfoLabelPL1;
 
@@ -82,7 +82,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label HasloLabel;
 
@@ -91,7 +91,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EdytujHasloButton;
 
@@ -100,7 +100,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox WpiszNoweHasloBox;
 
@@ -109,7 +109,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ZapiszEdycjeHButton;
 
@@ -118,7 +118,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label InfoLabelPL2;
 
@@ -127,7 +127,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button WylogujButton;
 
@@ -136,7 +136,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UsunKontoButton;
 
@@ -145,7 +145,7 @@ namespace AppCalendar
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label InfoLabelPL3;
     }

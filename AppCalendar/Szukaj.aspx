@@ -9,14 +9,15 @@
     <link rel="stylesheet" type="text/css" href="Styl.css"/>
 </head>
 <body>
-    <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona glowna.  </a> <a href="https://localhost:44360/ListaToDo.aspx">Lista to do.  </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz.</a></p>
+    <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
     <p style="font-size: 25px; font-family: serif; font-weight: bold;">Szukaj wydarzenia:</p>
     <form id="form1" runat="server">
             <div style="width: 375px; height: 66px">
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Szukaj" /><br />
+                <asp:Label ID="Label" runat="server" Text="Wpisz nazwę wydarzenia"></asp:Label><br />
+                <asp:TextBox ID="TextBoxNazwaWydarzenia" runat="server"></asp:TextBox>
+                <asp:Button ID="ButtonSzukaj" runat="server" OnClick="ButtonSzukaj_Click" Text="Szukaj" /><br />
                 <br />
-                <asp:Label ID="Label1" runat="server" Width="318px"></asp:Label></div>
+                <asp:Label ID="LabelKomunikat" runat="server" Width="318px"></asp:Label></div>
             <asp:ListView ID="ListView" runat="server" DataKeyNames="Id">
                 <ItemTemplate>
                     <ul>
@@ -36,8 +37,6 @@
                 <asp:Panel runat="server" Visible='<%# Convert.ToDateTime(Eval("Data")).Date >= DateTime.Now.Date %>'>
                      <asp:Button ID="EdytujButtonW" runat="server" Text="Edytuj" OnClick="EdytujButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
                      <asp:Button ID="UsunButtonW" runat="server" Text="Usuń" OnClick="UsunButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
-                     <asp:TextBox ID="WpisznNoweDaneBox" runat="server" Visible="false" Text='<%# Eval("Nazwa") %>' />
-                     <asp:Button  ID="ZapiszEdycjeButtonW" runat="server" Text="Zapisz" Visible="false" OnClick="ZapiszEdycjeButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
                 </asp:Panel>
                 </li>
                 </ul>

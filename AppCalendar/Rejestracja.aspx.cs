@@ -14,14 +14,10 @@ namespace AppCalendar
 {
     public partial class Rejestracja : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
 
         protected void ZarejestrujButton_Click(object sender, EventArgs e)
-        {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\uuero\Source\Repos\calendar\AppCalendar\App_Data\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
+        { 
             string email = EmailBoxR.Text;
             string haslo = HasloBoxR.Text;
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(haslo))
