@@ -22,7 +22,7 @@
     <ItemTemplate>
     <ul>
         <li <%# Convert.ToDateTime(Eval("Data")).Date < DateTime.Now.Date ? "style=\"text-decoration: line-through\"" : "" %>>
-            <strong>Email osoby, która udostępniła ci wydarzenie: </strong> <%# Eval("Id_Uzytkownika") %> <br />    
+       
             <strong>Nazwa: </strong> <%# Eval("Nazwa") %> <br />
             <strong>Data: </strong> <%# Eval("Data", "{0:d}") %> <br />
             <strong>Godzina: </strong> <%# Eval("Godzina", "{0:t}") %> <br />

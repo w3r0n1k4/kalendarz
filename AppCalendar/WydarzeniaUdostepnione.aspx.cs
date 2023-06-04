@@ -20,6 +20,25 @@ namespace AppCalendar
             }
 
             var dc = DataContextSingleton.GetInstance();
+            /*var wydarzenia = (from udostepnione in dc.Tabela_WydarzeniaUdostepnione
+                              join wydarzenie in dc.Tabela_Wydarzenia on udostepnione.Id_Wydarzenia equals wydarzenie.Id
+                              join uzytkownik in dc.Tabela_RL on wydarzenie.Id_Uzytkownika equals uzytkownik.Id
+                              where udostepnione.Id_Uzytkownika == user_id
+                              orderby wydarzenie.Data, wydarzenie.Godzina
+                              select new
+                              {
+                                  uzytkownik.Email,
+                                  wydarzenie.Nazwa,
+                                  wydarzenie.Data,
+                                  wydarzenie.Godzina,
+                                  wydarzenie.Opis,
+                                  wydarzenie.Miejsce,
+                                  wydarzenie.Goscie,
+                                  wydarzenie.Notatka,
+                                  wydarzenie.Kolor,
+                                  wydarzenie.Priorytet
+                              }).ToList();*/
+
             var wydarzenia = (from udostepnione in dc.Tabela_WydarzeniaUdostepnione
                               join wydarzenie in dc.Tabela_Wydarzenia on udostepnione.Id_Wydarzenia equals wydarzenie.Id
                               where udostepnione.Id_Uzytkownika == user_id
@@ -28,6 +47,7 @@ namespace AppCalendar
 
             ListView.DataSource = wydarzenia;
             ListView.DataBind();
+
 
         }
 
@@ -49,7 +69,8 @@ namespace AppCalendar
                                   join wydarzenie in dc.Tabela_Wydarzenia on udostepnione.Id_Wydarzenia equals wydarzenie.Id
                                   where udostepnione.Id_Uzytkownika == user_id
                                   orderby wydarzenie.Data, wydarzenie.Godzina
-                                  select wydarzenie).ToList();  ListView.DataSource = wydarzenia;
+                                  select wydarzenie).ToList();  
+                ListView.DataSource = wydarzenia;
                 ListView.DataBind();
             }
         }

@@ -43,7 +43,7 @@ namespace AppCalendar
                             KategoriaLabelDane.Text = wydarzenie.Tabela_Kategorie.Nazwa.ToString();
                         }
 
-                        var osoby = context.Tabela_RL.Select(x => x.Email).ToList();
+                        var osoby = context.Tabela_RL.Where(x => x.Id != user_id).Select(x => x.Email).ToList();
                         CheckBoxListOsoby.DataSource = osoby;
                         CheckBoxListOsoby.DataBind();
                     }
