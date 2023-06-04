@@ -13,7 +13,7 @@ namespace AppCalendar
         protected void Page_Load(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
+            //int user_id = 1;
 
             if (!Page.IsPostBack)
             {
@@ -27,7 +27,7 @@ namespace AppCalendar
                         if (wydarzenie != null)
                         {
                             NazwaBox.Text = wydarzenie.Nazwa;
-                            DataBox.Text = wydarzenie.Data.ToShortDateString();
+                            DataBox.Text = wydarzenie.Data.ToString("yyyy-MM-dd");
                             GodzinaBox.Text = wydarzenie.Godzina.ToString();
                             OpisBox.Text = wydarzenie.Opis;
                             MiejsceBox.Text = wydarzenie.Miejsce;
@@ -55,7 +55,7 @@ namespace AppCalendar
                 int id = int.Parse(Request.QueryString["id"]);
 
                 string nazwa = NazwaBox.Text;
-                DateTime data = DateTime.Parse(DataBox.Text);
+                DateTime data = Convert.ToDateTime(DataBox.Text);
                 TimeSpan godzina = TimeSpan.Parse(GodzinaBox.Text);
                 string opis = OpisBox.Text;
                 string miejsce = MiejsceBox.Text;
