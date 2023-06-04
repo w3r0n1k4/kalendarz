@@ -6,7 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Twój kalendarz</title>
-    <link href="Styl.css" rel="stylesheet" type="text/css" />
+    <% if (Session["DarkMode"] != null && (bool)Session["DarkMode"]) { %>
+    <link rel="stylesheet" href="Styl.css" type="text/css" />
+    <% } else { %>
+    <link rel="stylesheet" href="Darkmode.css" type="text/css" />
+    <% } %>
 </head>
 <body>
      <form id="form1" runat="server">
@@ -15,7 +19,9 @@
             <asp:Calendar ID="Kalendarz" runat="server" OnSelectionChanged="Kalendarz_SelectionChanged"  DayRender="Kalendarz_DayRender" Height="238px" Width="1160px"></asp:Calendar>
             
             <asp:Button ID="DodajWydarzenieButton" runat="server" Text="Dodaj wydarzenie" Visible="false" OnClick="DodajWydarzenieButton_Click" />
-            <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="false" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="false"></asp:TextBox><br/>
+            <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="false" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="false"></asp:TextBox>
+             <asp:Button ID="Mode" runat="server" OnClick="Mode_Click" Text="Zmień motyw" />
+             <br/>
             <asp:Label ID="DataLabel" runat="server" Text="Data:     " Visible="false" ></asp:Label><asp:TextBox ID="DataBox" runat="server" TextMode="Date" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="GodzinaLabel" runat="server" Text="Godzina:     " Visible="false" ></asp:Label><asp:TextBox ID="GodzinaBox" runat="server" TextMode="Time" Visible="false"></asp:TextBox><br/>
             <asp:Label ID="OpisLabel" runat="server" Text="Opis:     " Visible="false"></asp:Label><asp:TextBox ID="OpisBox" runat="server" Visible="false"></asp:TextBox><br/>

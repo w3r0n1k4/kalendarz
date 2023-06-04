@@ -7,7 +7,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Rejestracja</title>
-    <link href="Styl.css" rel="stylesheet" type="text/css" />
+     <% if (Session["DarkMode"] != null && (bool)Session["DarkMode"]) { %>
+    <link rel="stylesheet" href="Styl.css" type="text/css" />
+    <% } else { %>
+    <link rel="stylesheet" href="Darkmode.css" type="text/css" />
+    <% } %>
 </head>
 
 <body>

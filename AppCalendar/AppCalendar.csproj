@@ -81,6 +81,7 @@
     <Content Include="App_Data\DataBase_log.ldf">
       <DependentUpon>DataBase.mdf</DependentUpon>
     </Content>
+    <Content Include="Darkmode.css" />
     <Content Include="EdycjaDanych.aspx" />
     <Content Include="ListaToDo.aspx" />
     <Content Include="Logowanie.aspx" />

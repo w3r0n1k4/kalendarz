@@ -14,7 +14,7 @@ namespace AppCalendar
 {
     public partial class Rejestracja : System.Web.UI.Page
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ADAMC\SOURCE\REPOS\KAL\APPCALENDAR\APP_DATA\DATABASE.MDF;Integrated Security=True;Connect Timeout=30";
 
         protected void ZarejestrujButton_Click(object sender, EventArgs e)
         { 

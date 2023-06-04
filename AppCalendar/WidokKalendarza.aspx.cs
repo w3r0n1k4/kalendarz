@@ -16,6 +16,10 @@ namespace AppCalendar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["DarkMode"] == null)
+            {
+                Session["DarkMode"] = true;
+            }
             if (!IsPostBack)
             {
                 int user_id = Int32.Parse(Session["user_id"].ToString());
@@ -289,6 +293,12 @@ namespace AppCalendar
                 }
                 Controls.Add(div);
             }
+        }
+
+        protected void Mode_Click(object sender, EventArgs e)
+        {
+            Session["DarkMode"] = !(bool)Session["DarkMode"];
+            Response.Redirect("WidokKalendarza.aspx");
         }
     }
 }

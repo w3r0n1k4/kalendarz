@@ -6,7 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Edycja Danych</title>
-    <link href="Styl.css" rel="stylesheet" type="text/css" />
+     <% if (Session["DarkMode"] != null && (bool)Session["DarkMode"]) { %>
+    <link rel="stylesheet" href="Styl.css" type="text/css" />
+    <% } else { %>
+    <link rel="stylesheet" href="Darkmode.css" type="text/css" />
+    <% } %>
 </head>
 <body>
     <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>

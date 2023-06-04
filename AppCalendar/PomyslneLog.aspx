@@ -6,7 +6,11 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Zalogowano</title>
-    <link href="Styl.css" rel="stylesheet" type="text/css" />
+    <% if (Session["DarkMode"] != null && (bool)Session["DarkMode"]) { %>
+    <link rel="stylesheet" href="Styl.css" type="text/css" />
+    <% } else { %>
+    <link rel="stylesheet" href="Darkmode.css" type="text/css" />
+    <% } %>
 </head>
 
 <body>
@@ -23,6 +27,7 @@
              </p>
              <asp:Button ID="WylogujButton" runat="server" Text="Wyloguj" OnClick="WylogujButton_Click" /><br/>
              <asp:Button ID="UsunKontoButton" runat="server" Text="Usuń konto" OnClick="UsunKontoButton_Click" /><br/>
+             <asp:Button ID="Mode" runat="server" OnClick="Mode_Click" Text="Zmień motyw" />
              <asp:Label ID="InfoLabelPL3" runat="server" Text=""></asp:Label>
              <br/>
     <div style="text-align: center; height: 300px;">

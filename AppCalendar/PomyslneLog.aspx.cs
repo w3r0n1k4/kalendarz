@@ -14,9 +14,13 @@ namespace AppCalendar
 {
     public partial class PomyslneLog : System.Web.UI.Page
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\asiak\Documents\DataBase.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ADAMC\SOURCE\REPOS\KAL\APPCALENDAR\APP_DATA\DATABASE.MDF;Integrated Security=True;Connect Timeout=30";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["DarkMode"] == null)
+            {
+                Session["DarkMode"] = true;
+            }
             string email = Request.QueryString["email"];
             string haslo = Request.QueryString["haslo"];
 
@@ -200,6 +204,12 @@ namespace AppCalendar
             InfoLabelPL2.Text = "Hasło zostało zmienione na: " + NoweHaslo + ".Zaloguj się ponownie!";
             string redirectScript = "setTimeout(function() { window.location.href = 'Logowanie.aspx'; }, 2000);";
             ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
+        }
+
+        protected void Mode_Click(object sender, EventArgs e)
+        {
+            Session["DarkMode"] = !(bool)Session["DarkMode"];
+            Response.Redirect("PomyslneLog.aspx");   
         }
     }
 }
