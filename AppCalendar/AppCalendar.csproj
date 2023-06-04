@@ -93,6 +93,7 @@
     <Content Include="Udostepnianie.aspx" />
     <Content Include="Web.config" />
     <Content Include="WidokKalendarza.aspx" />
+    <Content Include="WydarzeniaUdostepnione.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class.cs" />
@@ -164,6 +165,13 @@
     </Compile>
     <Compile Include="WidokKalendarza.aspx.designer.cs">
       <DependentUpon>WidokKalendarza.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WydarzeniaUdostepnione.aspx.cs">
+      <DependentUpon>WydarzeniaUdostepnione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WydarzeniaUdostepnione.aspx.designer.cs">
+      <DependentUpon>WydarzeniaUdostepnione.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

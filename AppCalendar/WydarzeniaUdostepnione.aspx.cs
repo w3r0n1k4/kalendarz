@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace AppCalendar
+{
+    public partial class WydarzeniaUdostepnione : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            int user_id = Int32.Parse(Session["user_id"].ToString());
+            //int user_id = 43;
+
+            if (Session["DarkMode"] == null)
+            {
+                Session["DarkMode"] = true;
+            }
+
+            var dc = DataContextSingleton.GetInstance();
+            var wydarzenia = (from udostepnione in dc.Tabela_WydarzeniaUdostepnione
+                              join wydarzenie in dc.Tabela_Wydarzenia on udostepnione.Id_Wydarzenia equals wydarzenie.Id
+                              where udostepnione.Id_Uzytkownika == user_id
+                              orderby wydarzenie.Data, wydarzenie.Godzina
+                              select wydarzenie).ToList();
+
+            ListView.DataSource = wydarzenia;
+            ListView.DataBind();
+
+        }
+
+        protected void UsunButtonW_Click(object sender, EventArgs e)
+        {
+            int user_id = Int32.Parse(Session["user_id"].ToString());
+            //int user_id = 43;
+
+            //int id = Convert.ToInt32((sender as Button).CommandArgument);
+
+            var dc = DataContextSingleton.GetInstance();
+            var wydarzenieU = dc.Tabela_WydarzeniaUdostepnione.FirstOrDefault(w => w.Id_Uzytkownika == user_id);
+
+            if (wydarzenieU != null)
+            {
+                dc.Tabela_WydarzeniaUdostepnione.DeleteOnSubmit(wydarzenieU);
+                dc.SubmitChanges();
+                var wydarzenia = (from udostepnione in dc.Tabela_WydarzeniaUdostepnione
+                                  join wydarzenie in dc.Tabela_Wydarzenia on udostepnione.Id_Wydarzenia equals wydarzenie.Id
+                                  where udostepnione.Id_Uzytkownika == user_id
+                                  orderby wydarzenie.Data, wydarzenie.Godzina
+                                  select wydarzenie).ToList();  ListView.DataSource = wydarzenia;
+                ListView.DataBind();
+            }
+        }
+    }
+}

@@ -13,7 +13,7 @@
     <% } %>
 </head>
 <body>
-    <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
+    <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a><a href="https://localhost:44360/WydarzeniaUdostepnione.aspx"> Udostępnione Wydarzenia | </a></p>
     <form id="form1" runat="server">
         <div draggable="auto">
              <asp:Label ID="NazwaLabel" runat="server" Text="Nazwa:      " Visible="true" ></asp:Label><asp:TextBox ID="NazwaBox" runat="server" Visible="true"></asp:TextBox><br/>

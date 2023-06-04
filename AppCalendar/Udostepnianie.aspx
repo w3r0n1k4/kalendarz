@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Twoja Lista To Do</title>
+    <title>Udostępnianie wydarzeń</title>
      <% if (Session["DarkMode"] != null && (bool)Session["DarkMode"]) { %>
     <link rel="stylesheet" href="Styl.css" type="text/css" />
     <% } else { %>
