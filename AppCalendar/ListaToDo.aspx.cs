@@ -20,6 +20,11 @@ namespace AppCalendar
             int user_id = Int32.Parse(Session["user_id"].ToString());
             //int user_id = 43;
 
+            if (Session["DarkMode"] == null)
+            {
+                Session["DarkMode"] = true;
+            }
+
             var dc = DataContextSingleton.GetInstance();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
             ListView.DataSource = wydarzenia;
@@ -53,5 +58,12 @@ namespace AppCalendar
             string id = edytujButton.CommandArgument;
             Response.Redirect("EdycjaDanych.aspx?id=" + id);
         }
+
+        protected void Mode_Click(object sender, EventArgs e)
+        {
+            Session["DarkMode"] = !(bool)Session["DarkMode"];
+            Response.Redirect("ListaToDo.aspx");
+        }
     }
+
 }

@@ -14,8 +14,11 @@
 </head>
 <body>
    <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
-   <p style="font-size: 25px; font-family: serif; font-weight: bold;">Twoja lista to do:</p>
 <form id="form1" runat="server">
+   <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <asp:Button ID="Mode" runat="server" OnClick="Mode_Click" Text="Zmień motyw" />
+        <p style="font-size: 25px; font-family: serif; font-weight: bold;">Twoja lista to do:</p>
+    </div>
 <asp:ListView ID="ListView" runat="server" DataKeyNames="Id">
     <ItemTemplate>
     <ul>

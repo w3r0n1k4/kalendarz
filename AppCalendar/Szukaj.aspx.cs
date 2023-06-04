@@ -9,6 +9,13 @@ namespace AppCalendar
 {
     public partial class Szukaj : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        { 
+            if (Session["DarkMode"] == null)
+            {
+                Session["DarkMode"] = true;
+            }
+        }
         protected void ButtonSzukaj_Click(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
@@ -59,6 +66,12 @@ namespace AppCalendar
             Button edytujButton = (Button)sender;
             string id = edytujButton.CommandArgument;
             Response.Redirect("EdycjaDanych.aspx?id=" + id);
+        }
+
+        protected void Mode_Click(object sender, EventArgs e)
+        {
+            Session["DarkMode"] = !(bool)Session["DarkMode"];
+            Response.Redirect("Szukaj.aspx");
         }
     }
 }
