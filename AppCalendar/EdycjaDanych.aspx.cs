@@ -53,12 +53,8 @@ namespace AppCalendar
             if (Request.QueryString["id"] != null)
             {
                 int id = int.Parse(Request.QueryString["id"]);
-
-                string nazwa = NazwaBox.Text;
                 DateTime data = Convert.ToDateTime(DataBox.Text);
                 TimeSpan godzina = TimeSpan.Parse(GodzinaBox.Text);
-                string opis = OpisBox.Text;
-                string miejsce = MiejsceBox.Text;
                 int kategoriaId = int.Parse(KategoriaList.SelectedValue);
                
                 var dc = DataContextSingleton.GetInstance();
@@ -66,11 +62,16 @@ namespace AppCalendar
                 var wydarzenie = dc.Tabela_Wydarzenia.FirstOrDefault(x => x.Id == id);
                 if (wydarzenie != null)
                 {
-                    wydarzenie.Nazwa = nazwa;
+                    wydarzenie.Nazwa = NazwaBox.Text;
                     wydarzenie.Data = data;
                     wydarzenie.Godzina = godzina;
-                    wydarzenie.Opis = opis;
-                    wydarzenie.Miejsce = miejsce;
+                    wydarzenie.Opis = OpisBox.Text;
+                    wydarzenie.Miejsce = MiejsceBox.Text;
+                    wydarzenie.Goscie = GoscieBox.Text;
+                    wydarzenie.Notatka = NotatkaBox.Text;
+                    wydarzenie.Kolor = KolorBox.Text;
+                    wydarzenie.Priorytet = Convert.ToInt32(PriorytetBox.Text);
+                    
                     wydarzenie.Id_Kategorii = kategoriaId;
 
                     dc.SubmitChanges();
