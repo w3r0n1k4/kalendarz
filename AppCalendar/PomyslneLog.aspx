@@ -33,6 +33,7 @@
     <div style="text-align: center; height: 300px;">
         <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/WidokKalendarza.aspx">Kalendarz</a></p>
         <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/ListaToDo.aspx">Lista to do</a></p>
+        <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/WydarzeniaUdostepnione.aspx">Udostępnione Tobie wydarzenia</a></p>
         <p style="font-size: 30px; font-family: serif; font-weight: bold"><a href="https://localhost:44360/Szukaj.aspx">Wyszukaj wydarzenie</a></p>
     </div>
          </div>

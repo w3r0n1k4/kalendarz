@@ -12,7 +12,6 @@ namespace AppCalendar
         protected void Page_Load(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
 
             if (Session["DarkMode"] == null)
             {
@@ -54,9 +53,6 @@ namespace AppCalendar
         protected void UsunButtonW_Click(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
-
-            //int id = Convert.ToInt32((sender as Button).CommandArgument);
 
             var dc = DataContextSingleton.GetInstance();
             var wydarzenieU = dc.Tabela_WydarzeniaUdostepnione.FirstOrDefault(w => w.Id_Uzytkownika == user_id);
@@ -70,6 +66,7 @@ namespace AppCalendar
                                   where udostepnione.Id_Uzytkownika == user_id
                                   orderby wydarzenie.Data, wydarzenie.Godzina
                                   select wydarzenie).ToList();  
+
                 ListView.DataSource = wydarzenia;
                 ListView.DataBind();
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,7 +19,6 @@ namespace AppCalendar
             }
 
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
 
             if (!Page.IsPostBack)
             {
@@ -39,7 +39,9 @@ namespace AppCalendar
                             GoscieLabelDane.Text = wydarzenie.Goscie;
                             NotatkaLabelDane.Text = wydarzenie.Notatka;
                             KolorLabelDane.Text = wydarzenie.Kolor;
+                            //KolorLabelDane.ForeColor = ColorTranslator.FromHtml(wydarzenie.Kolor);
                             PriorytetLabelDane.Text = wydarzenie.Priorytet.ToString();
+                            PriorytetLabelDane.ForeColor = Color.Red;
                             KategoriaLabelDane.Text = wydarzenie.Tabela_Kategorie.Nazwa.ToString();
                         }
 

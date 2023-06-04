@@ -23,7 +23,6 @@ namespace AppCalendar
             if (!IsPostBack)
             {
                 int user_id = Int32.Parse(Session["user_id"].ToString());
-                //int user_id = 43;
 
                 Kalendarz.SelectedDate = DateTime.Today;
                 DataBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -86,7 +85,6 @@ namespace AppCalendar
         protected void Kalendarz_SelectionChanged(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
 
             var dc = DataContextSingleton.GetInstance();
             var wydarzenia = dc.Tabela_Wydarzenia.Where(w => w.Id_Uzytkownika == user_id && w.Data == Kalendarz.SelectedDate.Date).OrderBy(w => w.Data).ThenBy(w => w.Godzina).ToList();
@@ -201,7 +199,6 @@ namespace AppCalendar
         protected void ZapiszButton_Click(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
 
             var dc = DataContextSingleton.GetInstance();
             var noweWydarzenie = new Tabela_Wydarzenia

@@ -13,7 +13,6 @@ namespace AppCalendar
         protected void Page_Load(object sender, EventArgs e)
         {
             int user_id = Int32.Parse(Session["user_id"].ToString());
-            //int user_id = 43;
 
             if (!Page.IsPostBack)
             {

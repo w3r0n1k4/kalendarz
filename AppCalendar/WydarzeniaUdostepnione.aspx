@@ -13,7 +13,7 @@
     <% } %>
 </head>
 <body>
-   <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
+   <p style="font-size: 16px; font-family: serif;"><a href="https://localhost:44360/PomyslneLog.aspx">Strona główna | </a> <a href="https://localhost:44360/ListaToDo.aspx"> Lista to do | </a> <a href="https://localhost:44360/Szukaj.aspx"> Szukaj wydarzenia | </a> <a href="https://localhost:44360/WidokKalendarza.aspx"> Kalendarz </a></p>
 <form id="form1" runat="server">
    <div style="display: flex; flex-direction: column; align-items: flex-start;">
         <p style="font-size: 25px; font-family: serif; font-weight: bold;">Wydarznia, które zostały dla Ciebie udostępnione:</p>
