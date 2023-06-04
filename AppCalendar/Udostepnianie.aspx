@@ -26,9 +26,10 @@
             <asp:Label ID="NotatkaLabel" runat="server" Text="Notatka:     " Visible="true"></asp:Label><asp:Label ID="NotatkaLabelDane" runat="server" Text=""></asp:Label><br/>
             <asp:Label ID="KolorLabel" runat="server" Text="Kolor:     " Visible="true"></asp:Label><asp:Label ID="KolorLabelDane" runat="server" Text=""></asp:Label><br/>
             <asp:Label ID="PriorytetLabel" runat="server" Text="Prioryet:     " Visible="true"></asp:Label><asp:Label ID="PriorytetLabelDane" runat="server" Text=""></asp:Label><br /><br />
-            <asp:Label ID="Labe2" runat="server" Font-Bold="true" Text="Wybierz osobę/y której/ym chcesz udostępnić to wydarzenie: "></asp:Label>
+            <asp:Label ID="Label2" runat="server" Font-Bold="true" Text="Wybierz osobę/y której/ym chcesz udostępnić to wydarzenie: "></asp:Label>
         <asp:CheckBoxList ID="CheckBoxListOsoby" runat="server"></asp:CheckBoxList>
-        <asp:Button ID="ButtonUdostepnij" runat="server" Text="Udostępnij" />
+        <asp:Button ID="ButtonUdostepnij" runat="server" Text="Udostępnij" OnClick="ButtonUdostepnij_Click" /><br/>
+        <asp:Label ID="InfoLabel" runat="server" Text=""></asp:Label>
     </form>
 </body>
 </html>

@@ -46,12 +46,52 @@ namespace AppCalendar
                         var osoby = context.Tabela_RL.Select(x => x.Email).ToList();
                         CheckBoxListOsoby.DataSource = osoby;
                         CheckBoxListOsoby.DataBind();
+                    }
+                }
+            }
+        }
+
+        protected void ButtonUdostepnij_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["id"] != null)
+            {
+                int wydarzenie_id = int.Parse(Request.QueryString["id"]);
 
 
+                foreach (ListItem listItem in CheckBoxListOsoby.Items)
+                {
+                    if (listItem.Selected)
+                    {
+                        string email = listItem.Value;
+                        Tabela_WydarzeniaUdostepnione dane = new Tabela_WydarzeniaUdostepnione();
+                        dane.Id_Uzytkownika = PobierzId(email);
+                        dane.Id_Wydarzenia = wydarzenie_id;
+
+                        var dc = DataContextSingleton.GetInstance();
+                        dc.Tabela_WydarzeniaUdostepnione.InsertOnSubmit(dane);
+                        dc.SubmitChanges();
                     }
                 }
             }
 
+            InfoLabel.Text = "Udostępniono!";
+            string redirectScript = "setTimeout(function() { window.location.href = 'WidokKalendarza.aspx'; }, 1000);";
+            ClientScript.RegisterStartupScript(this.GetType(), "RedirectScript", redirectScript, true);
+        }
+
+        public int PobierzId(string email)
+        {
+            var dc = DataContextSingleton.GetInstance();
+            var uzytkownik = dc.Tabela_RL.FirstOrDefault(u => u.Email == email);
+
+            if (uzytkownik != null)
+            {
+                return uzytkownik.Id;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

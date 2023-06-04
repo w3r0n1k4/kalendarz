@@ -213,13 +213,13 @@ namespace AppCalendar
         protected global::System.Web.UI.WebControls.Label PriorytetLabelDane;
 
         /// <summary>
-        /// Kontrolka Labe2.
+        /// Kontrolka Label2.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Labe2;
+        protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
         /// Kontrolka CheckBoxListOsoby.
@@ -238,5 +238,14 @@ namespace AppCalendar
         /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonUdostepnij;
+
+        /// <summary>
+        /// Kontrolka InfoLabel.
+        /// </summary>
+        /// <remarks>
+        /// Pole generowane automatycznie.
+        /// Aby wprowadzić zmiany, przenieś deklarację pola z pliku projektanta do pliku codebehind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InfoLabel;
     }
 }
