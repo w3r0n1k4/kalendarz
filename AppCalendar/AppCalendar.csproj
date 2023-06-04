@@ -90,15 +90,16 @@
     <Content Include="StronaGlowna.aspx" />
     <Content Include="Styl.css" />
     <Content Include="Szukaj.aspx" />
+    <Content Include="Udostepnianie.aspx" />
     <Content Include="Web.config" />
     <Content Include="WidokKalendarza.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class.cs" />
-    <Compile Include="DataClasses2.designer.cs">
+    <Compile Include="DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataClasses2.dbml</DependentUpon>
+      <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
     <Compile Include="EdycjaDanych.aspx.cs">
       <DependentUpon>EdycjaDanych.aspx</DependentUpon>
@@ -150,6 +151,13 @@
     <Compile Include="Szukaj.aspx.designer.cs">
       <DependentUpon>Szukaj.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Udostepnianie.aspx.cs">
+      <DependentUpon>Udostepnianie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Udostepnianie.aspx.designer.cs">
+      <DependentUpon>Udostepnianie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WidokKalendarza.aspx.cs">
       <DependentUpon>WidokKalendarza.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,11 +167,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataClasses2.dbml">
+    <Content Include="DataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClasses2.designer.cs</LastGenOutput>
+      <LastGenOutput>DataClasses.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="DataClasses.dbml.layout">
+      <DependentUpon>DataClasses.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -175,11 +186,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DataClasses2.dbml.layout">
-      <DependentUpon>DataClasses2.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

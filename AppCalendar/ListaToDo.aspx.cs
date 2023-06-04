@@ -64,6 +64,12 @@ namespace AppCalendar
             Session["DarkMode"] = !(bool)Session["DarkMode"];
             Response.Redirect("ListaToDo.aspx");
         }
-    }
 
+        protected void UdostepnijButtonW_Click(object sender, EventArgs e)
+        {
+            Button udostepnijButton = (Button)sender;
+            string id = udostepnijButton.CommandArgument;
+            Response.Redirect("Udostepnianie.aspx?id=" + id);
+        }
+    }
 }

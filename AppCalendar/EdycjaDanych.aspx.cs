@@ -21,7 +21,7 @@ namespace AppCalendar
                 {
                     int id = int.Parse(Request.QueryString["id"]);
 
-                    using (var context = new DataClasses2DataContext())
+                    using (var context = new DataClassesDataContext())
                     {
                         var wydarzenie = context.Tabela_Wydarzenia.FirstOrDefault(x => x.Id == id);
                         if (wydarzenie != null)

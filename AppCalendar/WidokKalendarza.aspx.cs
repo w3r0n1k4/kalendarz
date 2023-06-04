@@ -27,7 +27,8 @@ namespace AppCalendar
 
                 Kalendarz.SelectedDate = DateTime.Today;
                 DataBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                
+                GodzinaBox.Text = DateTime.Now.ToString("HH:mm");
+
                 Kalendarz.SelectedDayStyle.BackColor = System.Drawing.Color.CornflowerBlue;
                 DodajWydarzenieButton.Visible = true;
 
@@ -131,10 +132,10 @@ namespace AppCalendar
                     if (wydarzenie.Goscie != "")
                     {
                         div.InnerHtml += (" z ") + wydarzenie.Goscie;
-                    }                    
+                    }
                 }
                 Controls.Add(div);
-            } 
+            }
 
             DodajWydarzenieButton.Visible = true;
             NazwaLabel.Visible = false;
@@ -189,7 +190,7 @@ namespace AppCalendar
             PriorytetBox.Visible = true;
             ZapiszButton.Visible = true;
 
-            var dc = new DataClasses2DataContext();
+            var dc = new DataClassesDataContext();
             var kategorie = dc.Tabela_Kategorie.ToList();
             KategoriaList.DataSource = kategorie;
             KategoriaList.DataTextField = "Nazwa";

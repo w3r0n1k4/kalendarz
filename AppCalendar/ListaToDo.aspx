@@ -38,6 +38,7 @@
             <asp:Panel runat="server" Visible='<%# Convert.ToDateTime(Eval("Data")).Date >= DateTime.Now.Date %>'>
                 <asp:Button ID="EdytujButtonW" runat="server" Text="Edytuj" OnClick="EdytujButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
                 <asp:Button ID="UsunButtonW" runat="server" Text="Usuń" OnClick="UsunButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
+                <asp:Button ID="UdostepnijButtonW" runat="server" Text="Udostępnij" OnClick="UdostepnijButtonW_Click" CommandArgument='<%# Eval("Id") %>' />
             </asp:Panel>
         </li>
     </ul>

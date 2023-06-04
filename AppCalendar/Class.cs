@@ -7,9 +7,9 @@ namespace AppCalendar
 {
     public class DataContextSingleton
     {
-        private static readonly DataClasses2DataContext instance = new DataClasses2DataContext();
+        private static readonly DataClassesDataContext instance = new DataClassesDataContext();
 
-        public static DataClasses2DataContext GetInstance()
+        public static DataClassesDataContext GetInstance()
         {
             return instance;
         }
