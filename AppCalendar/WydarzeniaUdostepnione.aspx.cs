@@ -71,5 +71,11 @@ namespace AppCalendar
                 ListView.DataBind();
             }
         }
+
+        protected void Mode_Click(object sender, EventArgs e)
+        {
+            Session["DarkMode"] = !(bool)Session["DarkMode"];
+            Response.Redirect("WydarzeniaUdostepnione.aspx");
+        }
     }
 }
